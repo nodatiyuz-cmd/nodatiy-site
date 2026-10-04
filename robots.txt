@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://nodatiy.com/sitemap.xml
