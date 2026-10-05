@@ -30,7 +30,7 @@
 <meta name="twitter:title" content="Hojimuqon — podcast va YouTube production">
 <meta name="twitter:description" content="Bizneslar va ekspertlar uchun podcast va YouTube production: syomka, ovoz, montaj va nashr. 50+ podkast, 3+ yil tajriba. Buyurtma bering.">
 <script>document.documentElement.className="js"</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://nodatiy.com/#site","url":"https://nodatiy.com/","name":"Nodatiy","inLanguage":"uz","publisher":{"@id":"https://nodatiy.com/#person"}},{"@type":"Person","@id":"https://nodatiy.com/#person","name":"Hojimuqon","url":"https://nodatiy.com/","image":"https://nodatiy.com/assets/me-2.webp","jobTitle":"Videograf va montajchi","telephone":"+998200119181","knowsAbout":["Podcast production","YouTube kontent","Video montaj","Videografiya","Reels"],"sameAs":["https://t.me/Hojimuqonn","https://www.instagram.com/nodatiy/","https://www.youtube.com/@nodatiy"]},{"@type":"ProfessionalService","@id":"https://nodatiy.com/#service","name":"Nodatiy — podcast va YouTube production","url":"https://nodatiy.com/","image":"https://nodatiy.com/assets/og-3.jpg","logo":"https://nodatiy.com/assets/icon-nk-96.png","description":"Bizneslar va ekspertlar uchun podcast va YouTube production: syomka, ovoz, montaj va nashr. 50+ podkast, 3+ yil tajriba. Buyurtma bering.","telephone":"+998200119181","areaServed":"UZ","founder":{"@id":"https://nodatiy.com/#person"},"sameAs":["https://t.me/Hojimuqonn","https://www.instagram.com/nodatiy/","https://www.youtube.com/@nodatiy"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Xizmatlar","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Podcast production"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"YouTube kontent"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Reels va short-form video"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Tadbir syomkasi"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Travel va event video"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Online kurs kontenti"}}]}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://nodatiy.com/#site","url":"https://nodatiy.com/","name":"Nodatiy","inLanguage":"uz","publisher":{"@id":"https://nodatiy.com/#person"}},{"@type":"Person","@id":"https://nodatiy.com/#person","name":"Hojimuqon Xalilov Vahobjon o'g'li","alternateName":"Hojimuqon","url":"https://nodatiy.com/","image":"https://nodatiy.com/assets/me-2.webp","jobTitle":"Videograf va montajchi","telephone":"+998200119181","knowsAbout":["Podcast production","YouTube kontent","Video montaj","Videografiya","Reels"],"sameAs":["https://t.me/Hojimuqonn","https://www.instagram.com/nodatiy/","https://www.youtube.com/@nodatiy"]},{"@type":"ProfessionalService","@id":"https://nodatiy.com/#service","name":"Nodatiy — podcast va YouTube production","url":"https://nodatiy.com/","image":"https://nodatiy.com/assets/og-3.jpg","logo":"https://nodatiy.com/assets/icon-nk-96.png","description":"Bizneslar va ekspertlar uchun podcast va YouTube production: syomka, ovoz, montaj va nashr. 50+ podkast, 3+ yil tajriba. Buyurtma bering.","telephone":"+998200119181","areaServed":"UZ","founder":{"@id":"https://nodatiy.com/#person"},"sameAs":["https://t.me/Hojimuqonn","https://www.instagram.com/nodatiy/","https://www.youtube.com/@nodatiy"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Xizmatlar","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Podcast production"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"YouTube kontent"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Reels va short-form video"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Tadbir syomkasi"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Travel va event video"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Online kurs kontenti"}}]}}]}</script>
 <style>
 :root{--card:#1d1d1f;--text:#f5f5f7;--mute:#86868b;--line:#2d2d30}
 *{box-sizing:border-box;margin:0}
@@ -79,7 +79,9 @@ nav a{text-decoration:none}nav a:hover{color:#fff}
 .stats b{display:block;font-size:2.3rem;font-weight:600;letter-spacing:-.025em;line-height:1.1}
 .stats span{color:var(--mute);font-size:.95rem}
 .svc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.svc div{background:var(--card);padding:30px;border-radius:22px}
+.svc a{background:var(--card);padding:30px;border-radius:22px}
+.svc a{display:block;text-decoration:none;color:inherit}
+.svc span{display:block;margin-top:16px;color:#2997ff;font-size:.95rem;transition:transform .35s cubic-bezier(.2,.7,.2,1)}.svc a:hover span{transform:translateX(5px)}
 .svc h3{font-size:1.2rem;margin-bottom:8px}
 .svc p{color:var(--mute);font-size:.97rem}
 .about{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px}
@@ -112,8 +114,8 @@ html.js .rv.in{opacity:1;transform:none}
 .btn{transition:transform .3s cubic-bezier(.2,.7,.2,1),opacity .2s,background .3s}
 .btn:hover{transform:translateY(-2px) scale(1.03)}
 .btn:active{transform:scale(.97)}
-.svc div{transition:transform .4s cubic-bezier(.2,.7,.2,1),background .4s}
-.svc div:hover{transform:translateY(-6px);background:#252528}
+.svc a{transition:transform .4s cubic-bezier(.2,.7,.2,1),background .4s}
+.svc a:hover{transform:translateY(-6px);background:#252528}
 .logos img,.logos b{transition:transform .35s cubic-bezier(.2,.7,.2,1),opacity .3s}
 .logos img:hover,.logos b:hover{transform:scale(1.07);opacity:1}
 input,select{transition:border-color .25s,box-shadow .25s,background .25s}
@@ -178,12 +180,12 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 <h2>Xizmatlar</h2>
 <p class="lead">Podcast syomkasi, YouTube kanal uchun video, Reels montaj va tadbir syomkasi: syomkadan nashrgacha bir qo'lda.</p>
 <div class="svc">
-<div><h3>Podcast production</h3><p>Ko'p kamerali syomka, toza ovoz, yorug'lik va montaj.</p></div>
-<div><h3>YouTube kontent</h3><p>Intervyu va suhbatlar, kanal uchun tayyor video va nashr qilish.</p></div>
-<div><h3>Reels va short-form</h3><p>Uzun suhbatdan qisqa, e'tiborni ushlaydigan videolar.</p></div>
-<div><h3>Tadbir syomkasi</h3><p>Konferensiya, uchrashuv va yopiq tadbirlarni suratga olish.</p></div>
-<div><h3>Travel va event video</h3><p>Safar va ekspeditsiyalardan emotsiyaga boy kontent.</p></div>
-<div><h3>Online kurs kontenti</h3><p>Darslarni suratga olish va tushunarli qilib montaj qilish.</p></div>
+<a href="/xizmatlar/podcast-production/"><h3>Podcast production</h3><p>Ko'p kamerali syomka, toza ovoz, yorug'lik va montaj.</p><span>Ishlarni ko'rish ›</span></a>
+<a href="/xizmatlar/youtube-kontent/"><h3>YouTube kontent</h3><p>Intervyu va suhbatlar, kanal uchun tayyor video va nashr qilish.</p><span>Ishlarni ko'rish ›</span></a>
+<a href="/xizmatlar/reels-short-form/"><h3>Reels va short-form</h3><p>Uzun suhbatdan qisqa, e'tiborni ushlaydigan videolar.</p><span>Ishlarni ko'rish ›</span></a>
+<a href="/xizmatlar/tadbir-syomkasi/"><h3>Tadbir syomkasi</h3><p>Konferensiya, uchrashuv va yopiq tadbirlarni suratga olish.</p><span>Ishlarni ko'rish ›</span></a>
+<a href="/xizmatlar/travel-event-video/"><h3>Travel va event video</h3><p>Safar va ekspeditsiyalardan emotsiyaga boy kontent.</p><span>Ishlarni ko'rish ›</span></a>
+<a href="/xizmatlar/online-kurs-kontenti/"><h3>Online kurs kontenti</h3><p>Darslarni suratga olish va tushunarli qilib montaj qilish.</p><span>Ishlarni ko'rish ›</span></a>
 </div>
 </div></section>
 
@@ -203,11 +205,11 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 <p class="lead">Syomkada Sony kameralari, montaj va grafikada professional dasturlar bilan ishlayman.</p>
 <h3 class="gh">Kameralar</h3>
 <div class="gg">
-<figure class="g"><img loading="lazy" src="assets/gear/fx3.webp" width="600" height="400" alt="Sony FX3 kamerasi"><figcaption>Sony FX3</figcaption></figure>
-<figure class="g"><img loading="lazy" src="assets/gear/fx30.webp" width="600" height="400" alt="Sony FX30 kamerasi"><figcaption>Sony FX30</figcaption></figure>
-<figure class="g"><img loading="lazy" src="assets/gear/a7iv.webp" width="600" height="400" alt="Sony A7 IV kamerasi"><figcaption>Sony A7 IV</figcaption></figure>
-<figure class="g"><img loading="lazy" src="assets/gear/a7iii.webp" width="600" height="400" alt="Sony A7 III kamerasi"><figcaption>Sony A7 III</figcaption></figure>
-<figure class="g"><img loading="lazy" src="assets/gear/a7siii.webp" width="600" height="400" alt="Sony A7S III kamerasi"><figcaption>Sony A7S III</figcaption></figure>
+<figure class="g"><img loading="lazy" src="assets/gear/fx3.webp" width="900" height="600" alt="Sony FX3 kamerasi"><figcaption>Sony FX3</figcaption></figure>
+<figure class="g"><img loading="lazy" src="assets/gear/fx30.webp" width="900" height="600" alt="Sony FX30 kamerasi"><figcaption>Sony FX30</figcaption></figure>
+<figure class="g"><img loading="lazy" src="assets/gear/a7iv.webp" width="900" height="600" alt="Sony A7 IV kamerasi"><figcaption>Sony A7 IV</figcaption></figure>
+<figure class="g"><img loading="lazy" src="assets/gear/a7iii.webp" width="900" height="600" alt="Sony A7 III kamerasi"><figcaption>Sony A7 III</figcaption></figure>
+<figure class="g"><img loading="lazy" src="assets/gear/a7siii.webp" width="900" height="600" alt="Sony A7S III kamerasi"><figcaption>Sony A7S III</figcaption></figure>
 </div>
 <h3 class="gh">Dasturlar</h3>
 <div class="gg">
@@ -242,7 +244,7 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 </div>
 </div></section>
 </main>
-<footer>© 2026 Hojimuqon, nodatiy.com<br><a href="/credits.html">Rasm mualliflari</a></footer>
+<footer>© 2026 Hojimuqon Xalilov Vahobjon o'g'li, nodatiy.com<br><a href="/credits.html">Rasm mualliflari</a></footer>
 
 <script>
 const V=[["L2YAq8itUDM",7256],["PuxD8ThC3-U",3225],["GQxH5K4hQxQ",38],["OdDpfLR6Ye8",23],["zWl2hJdDJss",3357],["VeqjshKcRYI",1265]];
@@ -264,6 +266,7 @@ if(!matchMedia("(prefers-reduced-motion:reduce)").matches)setInterval(()=>{if(!h
 const f=$("f"),msg=$("msg"),w=$("w"),MO=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"],n0=new Date();
 w.min=n0.getFullYear()+"-"+String(n0.getMonth()+1).padStart(2,"0")+"-"+String(n0.getDate()).padStart(2,"0");
 w.addEventListener("click",()=>{try{w.showPicker()}catch(_){}});
+const X={"podcast-production":"Podcast production","youtube-kontent":"YouTube kanal uchun video","reels-short-form":"Reels va short-form","tadbir-syomkasi":"Tadbir yoki safar syomkasi","travel-event-video":"Tadbir yoki safar syomkasi","online-kurs-kontenti":"Online kurs kontenti"},xq=new URLSearchParams(location.search).get("x");if(xq&&X[xq])$("g").value=X[xq];
 const fd=s=>{const p=s.split("-");return +p[2]+"-"+MO[+p[1]-1]+", "+p[0]};
 f.onsubmit=async e=>{e.preventDefault();const d=new FormData(f);if(d.get("website"))return;d.set("when",fd(d.get("when")));
 if(!SHEET_URL){const m=`Assalomu alaykum! Saytingiz orqali buyurtma qoldirmoqchiman.\n\n👤 Ism: ${d.get("name")}\n📞 Aloqa: ${d.get("contact")}\n🎯 Maqsad: ${d.get("goal")}\n📅 Qachonga: ${d.get("when")}\n💰 Byudjet: ${d.get("budget")}`;location.href="https://t.me/Hojimuqonn?text="+encodeURIComponent(m);return}
@@ -271,7 +274,7 @@ msg.textContent="Yuborilmoqda...";
 try{await fetch(SHEET_URL,{method:"POST",mode:"no-cors",body:new URLSearchParams(d)});f.reset();msg.textContent="Rahmat! Arizangiz qabul qilindi, tez orada bog'lanaman."}
 catch(_){msg.textContent="Yuborib bo'lmadi. Telegram orqali yozing: @Hojimuqonn"}};
 (()=>{
-const g=".slider,.logos,#hamkorlar .mute,.stats>div,.svc div,.about>div,.photos,.g,.gh,form,#aloqa p,#aloqa .btns,section h2",cnt=new Map,io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;io.unobserve(el);el.classList.add("in");const b=el.querySelector("b");if(b&&el.parentElement.className=="stats")count(b);setTimeout(()=>el.classList.remove("rv","in"),1500)}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+const g=".slider,.logos,#hamkorlar .mute,.stats>div,.svc a,.about>div,.photos,.g,.gh,form,#aloqa p,#aloqa .btns,section h2",cnt=new Map,io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;io.unobserve(el);el.classList.add("in");const b=el.querySelector("b");if(b&&el.parentElement.className=="stats")count(b);setTimeout(()=>el.classList.remove("rv","in"),1500)}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
 document.querySelectorAll(g).forEach(el=>{const p=el.parentElement,n=cnt.get(p)||0;cnt.set(p,n+1);el.style.setProperty("--d",Math.min(n,5)*.09+"s");el.classList.add("rv");io.observe(el)});
 function count(b){const m=b.textContent.match(/^(\D*)(\d+)(.*)$/);if(!m||matchMedia("(prefers-reduced-motion:reduce)").matches)return;const to=+m[2],t0=performance.now();
 const f=t=>{const k=Math.min((t-t0)/1300,1),v=Math.round(to*(1-Math.pow(1-k,3)));b.textContent=m[1]+v+m[3];if(k<1)requestAnimationFrame(f)};b.textContent=m[1]+"0"+m[3];requestAnimationFrame(f)}

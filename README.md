@@ -22,3 +22,6 @@ Framework: None. Build command: bo'sh. Build output directory: `/` (bo'sh qoldir
 1. sheets.new ochib, **Extensions, Apps Script** ga `apps-script/Code.gs` ni qo'ying.
 2. **Deploy, New deployment, Web app**: Execute as **Me**, access **Anyone**.
 3. Chiqqan manzilni `index.html` dagi `const SHEET_URL=""` ga qo'ying.
+
+## Xizmat sahifalari
+`xizmatlar/<xizmat>/index.html` sahifalari `tools/build_services.py` skripti orqali yaratiladi. Videolar qo'shish: skriptdagi `VIDEOS` lug'atiga `("YouTube ID", boshlanish_soniyasi, "Sarlavha")` qo'shib, `python3 tools/build_services.py` ni ishga tushiring. Skript `sitemap.xml` ni ham yangilaydi.
