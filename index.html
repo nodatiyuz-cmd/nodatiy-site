@@ -152,6 +152,19 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 @media(max-width:640px){.mdl{column-gap:0}.mdl .nv{position:fixed;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:46px;height:46px}.mdl .pv{left:14px}.mdl .nx{right:14px}.mdl .yt{bottom:calc(14px + env(safe-area-inset-bottom,0px))}}
 .mdl.h .box{height:auto;width:min(calc(100vw - 210px),1120px,calc(84vh*16/9));aspect-ratio:16/9}
 @media(max-width:640px){.mdl.h .box{width:calc(100vw - 20px);border-radius:16px}}
+.bsh{margin:76px 0 24px}.bsh h3{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;letter-spacing:-.022em;line-height:1.1;margin:0 0 8px}.bsh p{margin:0;color:var(--mute)}
+.bs{--h:270px;display:flex;flex-wrap:wrap;gap:10px}
+.bs a{position:relative;display:block;flex:var(--r) 1 calc(var(--r)*var(--h));overflow:hidden;border-radius:18px;background:#111;border:1px solid rgba(255,255,255,.08);cursor:zoom-in}
+.bs a::before{content:"";display:block;padding-bottom:calc(100%/var(--r))}
+.bs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+@media(hover:hover){.bs a:hover img{transform:scale(1.045)}}
+.bs a:focus-visible{outline-offset:-3px}
+.lb .lbf{margin:0;display:grid;justify-items:center;gap:12px;max-width:100%}
+.lb .lbf img{display:block;max-width:min(calc(100vw - 210px),1400px);max-height:80vh;width:auto;height:auto;border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:fade .3s}
+.lb figcaption{color:#d2d2d7;font-size:.95rem;text-align:center;min-height:1.4em}
+@media(max-width:820px){.bs{--h:200px;gap:8px}.bsh{margin-top:56px}}
+@media(max-width:640px){.lb .lbf img{max-width:calc(100vw - 20px);max-height:70vh;border-radius:12px}}
+@media(max-width:520px){.bs{--h:150px}.bs a{border-radius:14px}}
 </style>
 </head>
 <body>
@@ -191,6 +204,8 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 <div><b>~20</b><span>tadbirkor bilan safarlarda syomka</span></div>
 <div><b>4 mln</b><span>podkastlarning umumiy ko'rilishi</span></div>
 </div>
+<div class="bsh"><h3>Kamera ortida</h3><p>Syomka maydonchalari va safarlardan kadrlar. Ustiga bosing, kattalashadi.</p></div>
+<div class="bs"><a href="assets/backstage/bs-1.webp" style="--r:1.5"><img loading="lazy" decoding="async" src="assets/backstage/bs-1-t.webp" width="820" height="547" alt="Hojimuqon kamera bilan, tabiatda syomka paytida guruh suratida"></a><a href="assets/backstage/bs-2.webp" style="--r:1.27" data-cap="Fikr yetakchilari tadbirida · Hikmat Abdurahmonov bilan"><img loading="lazy" decoding="async" src="assets/backstage/bs-2-t.webp" width="820" height="645" alt="Fikr yetakchilari tadbirida Hojimuqon va Hikmat Abdurahmonov"></a><a href="assets/backstage/bs-3.webp" style="--r:1.527" data-cap="Fikr yetakchilari · Tog' safari 3.0"><img loading="lazy" decoding="async" src="assets/backstage/bs-3-t.webp" width="820" height="537" alt="Fikr yetakchilari jamoasi va mehmon, Tog' safari 3.0"></a><a href="assets/backstage/bs-4.webp" style="--r:1.481"><img loading="lazy" decoding="async" src="assets/backstage/bs-4-t.webp" width="820" height="554" alt="Hojimuqon tog' daryosi bo'yida safar syomkasi paytida"></a><a href="assets/backstage/bs-5.webp" style="--r:1.0"><img loading="lazy" decoding="async" src="assets/backstage/bs-5-t.webp" width="820" height="820" alt="Backstage: syomkadan keyin mehmon bilan"></a><a href="assets/backstage/bs-6.webp" style="--r:1.0"><img loading="lazy" decoding="async" src="assets/backstage/bs-6-t.webp" width="820" height="820" alt="Backstage: syomka maydonchasida mehmon bilan"></a><a href="assets/backstage/bs-7.webp" style="--r:1.0"><img loading="lazy" decoding="async" src="assets/backstage/bs-7-t.webp" width="820" height="820" alt="Safar paytida mehmon bilan"></a></div>
 </div></section>
 
 <section id="xizmatlar" style="padding-top:0"><div class="wrap">
@@ -264,6 +279,7 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 <footer>© 2026 Hojimuqon Xalilov Vahobjon o'g'li, nodatiy.com<br><a href="/credits.html">Rasm mualliflari</a></footer>
 
 <div class="mdl h" id="mdl" role="dialog" aria-modal="true" aria-label="Video" hidden><button class="x" id="mx" aria-label="Yopish">✕</button><span class="cnt" id="mc" aria-live="polite"></span><button class="nv pv" id="mp" aria-label="Oldingi video"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><div class="box"><iframe id="mf" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><button class="nv nx" id="mn" aria-label="Keyingi video"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button><a class="yt" id="my" target="_blank" rel="noopener">YouTube'da ochish</a></div>
+<div class="mdl lb" id="lb" role="dialog" aria-modal="true" aria-label="Surat" hidden><button class="x" id="lbx" aria-label="Yopish">✕</button><span class="cnt" id="lbc" aria-live="polite"></span><button class="nv pv" id="lbp" aria-label="Oldingi surat"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><figure class="lbf"><img id="lbi" alt=""><figcaption id="lbt"></figcaption></figure><button class="nv nx" id="lbn" aria-label="Keyingi surat"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button></div>
 <script>
 const V=[["L2YAq8itUDM",0],["PuxD8ThC3-U",0],["GQxH5K4hQxQ",0],["OdDpfLR6Ye8",0],["zWl2hJdDJss",0],["VeqjshKcRYI",0],["wyULmvkAKmo",0],["_KWBw6mrXLU",0],["bsPky9leQ3o",0],["gV_9UrX5TlU",0],["rUyQ7KiMm3U",0],["9qGSB5K0Mgw",0],["7FcBJMtUiH4",0],["WWQlabnxy6Q",0],["fCoziXAD0R8",0]];
 const SHEET_URL=""; /* Google Apps Script manzili shu yerga qo'yiladi */
@@ -289,6 +305,13 @@ const mopen=k=>{mshow(k);MM.hidden=false;document.documentElement.style.overflow
 tr.addEventListener("click",e=>{const a=e.target.closest("a.card");if(!a||e.metaKey||e.ctrlKey||e.shiftKey||e.button)return;e.preventDefault();mopen(+a.dataset.n)});
 MX.onclick=mclose;MP.onclick=()=>mshow(mi-1);MN.onclick=()=>mshow(mi+1);MM.addEventListener("click",e=>{if(e.target===MM)mclose()});
 addEventListener("keydown",e=>{if(MM.hidden)return;if(e.key==="Escape")mclose();else if(e.key==="ArrowLeft"){e.preventDefault();mshow(mi-1)}else if(e.key==="ArrowRight"){e.preventDefault();mshow(mi+1)}});
+const BS=[...document.querySelectorAll(".bs a")],LB=$("lb"),LI=$("lbi"),LT=$("lbt"),LC=$("lbc");let bi=0,bx0=0;
+const bshow=k=>{bi=(k+BS.length)%BS.length;const a=BS[bi];LI.src=a.href;LI.alt=a.querySelector("img").alt;LT.textContent=a.dataset.cap||"";LC.textContent=(bi+1)+" / "+BS.length;(new Image).src=BS[(bi+1)%BS.length].href};
+const bclose=()=>{LB.hidden=true;LI.removeAttribute("src");document.documentElement.style.overflow="";BS[bi].focus({preventScroll:true})};
+BS.forEach(a=>a.addEventListener("click",e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.button)return;e.preventDefault();bshow(BS.indexOf(a));LB.hidden=false;document.documentElement.style.overflow="hidden";$("lbx").focus()}));
+$("lbx").onclick=bclose;$("lbp").onclick=()=>bshow(bi-1);$("lbn").onclick=()=>bshow(bi+1);LB.addEventListener("click",e=>{if(e.target===LB)bclose()});
+addEventListener("keydown",e=>{if(LB.hidden)return;if(e.key==="Escape")bclose();else if(e.key==="ArrowLeft"){e.preventDefault();bshow(bi-1)}else if(e.key==="ArrowRight"){e.preventDefault();bshow(bi+1)}});
+LB.addEventListener("touchstart",e=>{bx0=e.changedTouches[0].clientX},{passive:true});LB.addEventListener("touchend",e=>{const d=e.changedTouches[0].clientX-bx0;if(Math.abs(d)>55)bshow(bi+(d<0?1:-1))},{passive:true});
 const RM=matchMedia("(prefers-reduced-motion:reduce)").matches,VEL=40;
 const tick=t=>{requestAnimationFrame(tick);const dt=Math.min((t-t0)/1000||0,.1);t0=t;
 if(RM||!vis||document.hidden||mo)return;
@@ -308,7 +331,7 @@ msg.textContent="Yuborilmoqda...";
 try{await fetch(SHEET_URL,{method:"POST",mode:"no-cors",body:new URLSearchParams(d)});f.reset();msg.textContent="Rahmat! Arizangiz qabul qilindi, tez orada bog'lanaman."}
 catch(_){msg.textContent="Yuborib bo'lmadi. Telegram orqali yozing: @Hojimuqonn"}};
 (()=>{
-const g=".slider,.logos,#hamkorlar .mute,.stats>div,.svc a,.about>div,.photos,.g,.gh,form,#aloqa p,#aloqa .btns,section h2",cnt=new Map,io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;io.unobserve(el);el.classList.add("in");const b=el.querySelector("b");if(b&&el.parentElement.className=="stats")count(b);setTimeout(()=>el.classList.remove("rv","in"),1500)}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+const g=".slider,.logos,#hamkorlar .mute,.stats>div,.svc a,.about>div,.photos,.g,.gh,form,#aloqa p,#aloqa .btns,.bsh,.bs,section h2",cnt=new Map,io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;io.unobserve(el);el.classList.add("in");const b=el.querySelector("b");if(b&&el.parentElement.className=="stats")count(b);setTimeout(()=>el.classList.remove("rv","in"),1500)}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
 document.querySelectorAll(g).forEach(el=>{const p=el.parentElement,n=cnt.get(p)||0;cnt.set(p,n+1);el.style.setProperty("--d",Math.min(n,5)*.09+"s");el.classList.add("rv");io.observe(el)});
 function count(b){const m=b.textContent.match(/^(\D*)(\d+)(.*)$/);if(!m||matchMedia("(prefers-reduced-motion:reduce)").matches)return;const to=+m[2],t0=performance.now();
 const f=t=>{const k=Math.min((t-t0)/1300,1),v=Math.round(to*(1-Math.pow(1-k,3)));b.textContent=m[1]+v+m[3];if(k<1)requestAnimationFrame(f)};b.textContent=m[1]+"0"+m[3];requestAnimationFrame(f)}
