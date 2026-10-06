@@ -56,13 +56,20 @@ VIDEOS["podcast-production"] = [
 ]
 PLAY = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="rgba(0,0,0,.5)"/><path d="M26 20l18 12-18 12z" fill="#fff"/></svg>'
 e = html.escape
+VERTICAL = {"reels-short-form"}  # 9:16 (vertikal) bo'limlar: Reels/Shorts, bosilganda sayt ichida pleyer ochiladi
+MODAL = open("tools/modal.html").read()
+def cover(i): return f"/assets/reels/{i}.webp" if os.path.exists(f"assets/reels/{i}.webp") else f"https://i.ytimg.com/vi_webp/{i}/hqdefault.webp"
 def page(s):
     slug,title,goal,short,lead,pts = s; url=f"{BASE}/xizmatlar/{slug}/"; vids=VIDEOS.get(slug,[])
-    if vids:
+    vert = slug in VERTICAL
+    if vids and vert:
+        cards=''.join(f'<a class="vcard reel" href="https://www.youtube.com/shorts/{v[0]}" data-id="{v[0]}" target="_blank" rel="noopener" aria-label="{e(v[2] if len(v)>2 and v[2] else title)}: ko\'rish"><img loading="lazy" decoding="async" width="360" height="640" alt="{e(v[2] if len(v)>2 and v[2] else title+" namunasi "+str(i+1))}" src="{cover(v[0])}">{PLAY}</a>' for i,v in enumerate(vids))
+        works=f'<div class="works rl">{cards}</div>'
+    elif vids:
         cards=''.join(f'<a class="vcard" href="https://www.youtube.com/watch?v={v[0]}{'&amp;t='+str(v[1])+'s' if v[1] else ''}" target="_blank" rel="noopener" aria-label="{e(v[2] if len(v)>2 and v[2] else title)}: YouTube\'da ko\'rish"><img loading="lazy" decoding="async" width="480" height="360" alt="{e(v[2] if len(v)>2 and v[2] else title+" namunasi "+str(i+1))}" src="https://i.ytimg.com/vi_webp/{v[0]}/hqdefault.webp">{PLAY}</a>' for i,v in enumerate(vids))
         works=f'<div class="works">{cards}</div>'
     else:
-        works='<div class="works">'+'<div class="vcard ph"><span>Tez orada</span></div>'*3+'</div>\n<p class="note">Bu bo\'limdagi ishlar tez orada qo\'shiladi. Hozircha <a href="/#ishlar">asosiy sahifadagi namunalarni</a> ko\'rishingiz mumkin.</p>'
+        works='<div class="works%s">'%(' rl' if vert else '')+('<div class="vcard%s ph"><span>Tez orada</span></div>'%(' reel' if vert else ''))*(4 if vert else 3)+'</div>\n<p class="note">Bu bo\'limdagi ishlar tez orada qo\'shiladi. Hozircha <a href="/#ishlar">asosiy sahifadagi namunalarni</a> ko\'rishingiz mumkin.</p>'
     others=''.join(f'<a href="/xizmatlar/{o[0]}/">{e(o[1])}</a>' for o in SERVICES if o[0]!=slug)
     ld=json.dumps({"@context":"https://schema.org","@graph":[
       {"@type":"Service","name":title,"description":lead,"url":url,"areaServed":"UZ","provider":{"@type":"Person","name":NAME,"alternateName":"Hojimuqon","url":BASE+"/"}},
@@ -117,7 +124,7 @@ def page(s):
 <div class="end"><h2>Loyihangizni muhokama qilamiz</h2><a class="btn" href="/?x={slug}#buyurtma">Buyurtma berish</a></div>
 </main>
 <footer>© 2026 {e(NAME)}, nodatiy.com<br><a href="/credits.html">Rasm mualliflari</a></footer>
-</body>
+{MODAL if vert else ""}</body>
 </html>
 '''
 for s in SERVICES:

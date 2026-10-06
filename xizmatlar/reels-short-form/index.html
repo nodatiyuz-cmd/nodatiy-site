@@ -38,7 +38,7 @@
 <div class="cta"><a class="btn" href="/?x=reels-short-form#buyurtma">Buyurtma berish</a></div>
 <section>
 <h2>Qilingan ishlar</h2>
-<div class="works"><div class="vcard ph"><span>Tez orada</span></div><div class="vcard ph"><span>Tez orada</span></div><div class="vcard ph"><span>Tez orada</span></div></div>
+<div class="works rl"><div class="vcard reel ph"><span>Tez orada</span></div><div class="vcard reel ph"><span>Tez orada</span></div><div class="vcard reel ph"><span>Tez orada</span></div><div class="vcard reel ph"><span>Tez orada</span></div></div>
 <p class="note">Bu bo'limdagi ishlar tez orada qo'shiladi. Hozircha <a href="/#ishlar">asosiy sahifadagi namunalarni</a> ko'rishingiz mumkin.</p>
 </section>
 <section>
@@ -48,5 +48,15 @@
 <div class="end"><h2>Loyihangizni muhokama qilamiz</h2><a class="btn" href="/?x=reels-short-form#buyurtma">Buyurtma berish</a></div>
 </main>
 <footer>© 2026 Hojimuqon Xalilov Vahobjon o&#x27;g&#x27;li, nodatiy.com<br><a href="/credits.html">Rasm mualliflari</a></footer>
+<div class="mdl" id="mdl" role="dialog" aria-modal="true" aria-label="Video" hidden><button class="x" id="mx" aria-label="Yopish">✕</button><div class="box"><iframe id="mf" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><a class="yt" id="my" target="_blank" rel="noopener">YouTube'da ochish</a></div>
+<script>
+(()=>{const m=document.getElementById("mdl"),f=document.getElementById("mf"),y=document.getElementById("my"),x=document.getElementById("mx");let last=null;
+const close=()=>{m.hidden=true;f.src="about:blank";document.documentElement.style.overflow="";if(last)last.focus()};
+const open=a=>{last=a;f.src="https://www.youtube-nocookie.com/embed/"+a.dataset.id+"?autoplay=1&playsinline=1&rel=0&modestbranding=1";y.href=a.href;m.hidden=false;document.documentElement.style.overflow="hidden";x.focus()};
+document.querySelectorAll("a.reel").forEach(a=>a.addEventListener("click",e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.button)return;e.preventDefault();open(a)}));
+x.onclick=close;m.addEventListener("click",e=>{if(e.target===m)close()});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&!m.hidden)close()});
+})();
+</script>
 </body>
 </html>
