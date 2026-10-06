@@ -28,6 +28,18 @@ SERVICES = [
 ]
 # slug -> [("YouTube ID", boshlanish_soniyasi, "Sarlavha (ixtiyoriy)"), ...]
 VIDEOS = {s[0]: [] for s in SERVICES}
+VIDEOS["reels-short-form"] = [  # Shorts ID, 0, sarlavha (muqova: assets/reels/<ID>.webp)
+    ('MG7dX3oIPIw', 0, 'Trend kreativ video'),
+    ('Q0XDRWfl53Q', 0, "Fikr yetakchilari tog' safari"),
+    ('6u85-6hBKw8', 0, 'Habibullo Sadullayev | Fikr yetakchilari'),
+    ('rcuNMoPYFzE', 0, 'Instagram Reels'),
+    ('Of_h9_sIgqA', 0, 'Promo Reels video'),
+    ('NfDzzGq8DSA', 0, 'Fikr yetakchilari Nonushta tadbiri'),
+    ('dd6frqlIVOk', 0, 'Instagram Reels | Hojimurod Bakirov'),
+    ('qoZgty7zj3k', 0, 'Reels | Hojimurod Bakirov'),
+    ('5S9v-RQnA9Y', 0, 'Reels | Hojimurod Bakirov'),
+    ('k2mtu2Mzdis', 0, 'Reels | Hojimurod Bakirov'),
+]
 VIDEOS["youtube-kontent"] = [  # vaqt belgisi 0 bo'lsa video boshidan ochiladi
     ('GQxH5K4hQxQ', 0, "Gumanoid robotlar, AI startap, Logistika, Biznes ta'lim | Akmal Paiziev  #Dayjest"),
     ('RIca_MOMgrA', 0, "Dangasallik aslida yo'qmi? | Soatov Mirjalol"),
