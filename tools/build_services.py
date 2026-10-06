@@ -28,6 +28,23 @@ SERVICES = [
 ]
 # slug -> [("YouTube ID", boshlanish_soniyasi, "Sarlavha (ixtiyoriy)"), ...]
 VIDEOS = {s[0]: [] for s in SERVICES}
+VIDEOS["podcast-production"] = [
+    ('wyULmvkAKmo', 17, "KOFIRLAR, TASHQI KUCH, MAZHAB MONOPOLIYASI, DINIY TA'LIM, G'ARB, KONSPIROLOGIYA – ABROR MUXTOR ALIY"),
+    ('_KWBw6mrXLU', 4, "O'zbek parlamentiga ishonch, Prezident hokimiyati, Energetika islohoti, Ta'lim, Tramp siyosati"),
+    ('L2YAq8itUDM', 7256, 'Taqdirga iymon keltirish, Radikalizm, Zamonaviy hayot va xilma-xil fikrlik!'),
+    ('VRlKZz98wOs', 744, 'Genetik Pasport: Farzandingiz kelajagini DNK orqali bilish mumkinmi?'),
+    ('zWl2hJdDJss', 3357, 'Ramazon Temirov: Jangchi uchun eng qiyin sinov nima?'),
+    ('WWQlabnxy6Q', 8, 'Muvaffaqiyat formulasi: Eng yosh (male) IELTS 9.0 sohibi bilan ochiq suhbat'),
+    ('gV_9UrX5TlU', 2, "Shaxsiy brendni boshlash yo'llari ko'p, lekin qaysi biridan yurish kerak? | G'anisher Otaboyev"),
+    ('rUyQ7KiMm3U', 5, "18-25 yosh bo'lsangiz - millionlarni topishga kech emas!"),
+    ('PuxD8ThC3-U', 3230, 'Saroy masxarabozlari, Mirshakardan xafa bo‘lgan tadbirkor, Din kulgiga qarshimi?'),
+    ('fCoziXAD0R8', 1199, 'Coworkinglar qanday pul ishlaydi? C-Space asoschisi bilan biznes model va real tajriba haqida suhbat'),
+    ('OkjI1S8FAjg', 33, 'Andijon voqealari (2005), Toshkentdagi boylar, xususiy qamoqxona, parlament tirikmi?'),
+    ('Q2b0D1yhV3s', 86, 'Har bir O‘zbek ko‘rishi shart bo‘lgan kino! Sarvar Karimov'),
+    ('OdDpfLR6Ye8', 23, "Tadbirkorlik falsafasi, rivojlanish yo'li, milliy o'zlik harakati! | Abdukarim Mirzayev"),
+    ('n8q4ax1RA_c', 3326, "Maktab inqirozi, so'z erkinligi ahvoli va sun'iy intellekt bilan kelajak | Azam Qahramoniy"),
+    ('E3a5dKLMewE', 17, "Dinlar urushga sabab bo'ladimi? Xayrulla Umarov bilan suhbat"),
+]
 PLAY = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="rgba(0,0,0,.5)"/><path d="M26 20l18 12-18 12z" fill="#fff"/></svg>'
 e = html.escape
 def page(s):
