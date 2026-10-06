@@ -169,7 +169,13 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 @media(max-width:640px){.bs{--h:calc((100vw - 44px)*.3)}}
 @media(max-width:640px){.lb .lbf img{max-width:calc(100vw - 20px);max-height:70vh;border-radius:12px}}
 @media(max-width:520px){.bs a{border-radius:14px}}
-.mw{margin:26px 0 0;color:var(--mute)}.mw a{color:#2997ff;text-decoration:none}.mw a:hover{text-decoration:underline}
+.mw{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:30px}
+.mw span{flex:0 0 100%;color:var(--mute);font-size:.95rem;margin-bottom:2px}
+.mw a{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:980px;background:#1d1d1f;border:1px solid rgba(255,255,255,.08);color:var(--text);text-decoration:none;font-weight:500;font-size:.98rem;transition:transform .3s cubic-bezier(.2,.7,.2,1),background .3s}
+.mw a::after{content:"›";font-size:1.25em;line-height:1;color:var(--mute);transition:transform .3s,color .3s}
+.mw a:hover{background:#2c2c2f;transform:translateY(-2px)}.mw a:hover::after{transform:translateX(3px);color:#fff}
+.mw a:active{transform:scale(.97)}
+@media(max-width:520px){.mw a{padding:10px 16px;font-size:.92rem}}
 </style>
 </head>
 <body>
@@ -190,7 +196,8 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 <p class="lead">Podcast, intervyu va YouTube kanallar uchun suratga olingan ishlardan namunalar. Ustiga bosing, video shu yerning o'zida ochiladi.</p>
 <div class="vp" id="vp"><div class="slider"><div class="track" id="tr"></div></div>
 </div>
-<div class="wrap"><p class="mw">Barcha ishlarni xizmat turi bo'yicha ko'ring: <a href="/xizmatlar/podcast-production/">Podcast production</a> · <a href="/xizmatlar/youtube-kontent/">YouTube kontent</a> · <a href="/xizmatlar/reels-short-form/">Reels va short-form</a></p></div></section>
+<nav class="mw" aria-label="Ishlar xizmat turi bo'yicha"><span>Barcha ishlarni xizmat turi bo'yicha ko'ring</span><a href="/xizmatlar/podcast-production/">Podcast production</a><a href="/xizmatlar/youtube-kontent/">YouTube kontent</a><a href="/xizmatlar/reels-short-form/">Reels va short-form</a></nav>
+</div></section>
 
 <section id="hamkorlar" style="padding-top:0"><div class="wrap">
 <h2>Ishlangan loyihalar</h2>
