@@ -28,6 +28,15 @@ SERVICES = [
 ]
 # slug -> [("YouTube ID", boshlanish_soniyasi, "Sarlavha (ixtiyoriy)"), ...]
 VIDEOS = {s[0]: [] for s in SERVICES}
+VIDEOS["youtube-kontent"] = [  # vaqt belgisi 0 bo'lsa video boshidan ochiladi
+    ('GQxH5K4hQxQ', 0, "Gumanoid robotlar, AI startap, Logistika, Biznes ta'lim | Akmal Paiziev  #Dayjest"),
+    ('RIca_MOMgrA', 0, "Dangasallik aslida yo'qmi? | Soatov Mirjalol"),
+    ('9qGSB5K0Mgw', 0, 'Diqqatingiz o‘g‘irlanmoqda, iltimos ehtiyot bo‘ling!'),
+    ('JcXFes2h7rs', 0, 'IELTS WRITING BALLIMNI 6.0 DAN 8.0 GA KO’TARGAN 5 QADAM'),
+    ('XcRwFlRFBjs', 0, 'Premiere Pro: Montajni osonlashtiradigan 7 ta yashirin plagin'),
+    ('bsPky9leQ3o', 0, 'DADAM BILAN UNUTILMAS SAFAR: BOZTEPE, AYASOFYA, SÜMELA, VARVARA, AYDER, GANITA VA DOLMABAHÇE'),
+    ('7SUu1xocusE', 0, "Bunga e'tibor bermasangiz, kanalingiz barbod bo'ladi!"),
+]
 VIDEOS["podcast-production"] = [
     ('wyULmvkAKmo', 17, "KOFIRLAR, TASHQI KUCH, MAZHAB MONOPOLIYASI, DINIY TA'LIM, G'ARB, KONSPIROLOGIYA – ABROR MUXTOR ALIY"),
     ('_KWBw6mrXLU', 4, "O'zbek parlamentiga ishonch, Prezident hokimiyati, Energetika islohoti, Ta'lim, Tramp siyosati"),
@@ -50,7 +59,7 @@ e = html.escape
 def page(s):
     slug,title,goal,short,lead,pts = s; url=f"{BASE}/xizmatlar/{slug}/"; vids=VIDEOS.get(slug,[])
     if vids:
-        cards=''.join(f'<a class="vcard" href="https://www.youtube.com/watch?v={v[0]}&amp;t={v[1]}s" target="_blank" rel="noopener" aria-label="{e(v[2] if len(v)>2 and v[2] else title)}: YouTube\'da ko\'rish"><img loading="lazy" decoding="async" width="480" height="360" alt="{e(v[2] if len(v)>2 and v[2] else title+" namunasi "+str(i+1))}" src="https://i.ytimg.com/vi_webp/{v[0]}/hqdefault.webp">{PLAY}</a>' for i,v in enumerate(vids))
+        cards=''.join(f'<a class="vcard" href="https://www.youtube.com/watch?v={v[0]}{'&amp;t='+str(v[1])+'s' if v[1] else ''}" target="_blank" rel="noopener" aria-label="{e(v[2] if len(v)>2 and v[2] else title)}: YouTube\'da ko\'rish"><img loading="lazy" decoding="async" width="480" height="360" alt="{e(v[2] if len(v)>2 and v[2] else title+" namunasi "+str(i+1))}" src="https://i.ytimg.com/vi_webp/{v[0]}/hqdefault.webp">{PLAY}</a>' for i,v in enumerate(vids))
         works=f'<div class="works">{cards}</div>'
     else:
         works='<div class="works">'+'<div class="vcard ph"><span>Tez orada</span></div>'*3+'</div>\n<p class="note">Bu bo\'limdagi ishlar tez orada qo\'shiladi. Hozircha <a href="/#ishlar">asosiy sahifadagi namunalarni</a> ko\'rishingiz mumkin.</p>'
