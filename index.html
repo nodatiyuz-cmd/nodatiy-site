@@ -61,7 +61,7 @@ nav a{text-decoration:none}nav a:hover{color:#fff}
 .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 .vp{overflow:hidden;touch-action:pan-y;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
 .slider{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
-.track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab;user-select:none;-webkit-user-select:none}
+.track{display:flex;gap:16px;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab;user-select:none;-webkit-user-select:none}
 .track::-webkit-scrollbar{display:none}
 .track.drag{cursor:grabbing;scroll-snap-type:none}
 .card{position:relative;flex:0 0 calc((100% - 32px)/3);aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,.08);display:block;scroll-snap-align:start}
@@ -253,16 +253,25 @@ const $=id=>document.getElementById(id),tr=$("tr"),N=V.length;
 for(let s=0;s<3;s++)V.forEach((v,n)=>{const a=document.createElement("a"),o=s==1;a.className="card";a.draggable=false;a.href="https://www.youtube.com/watch?v="+v[0]+"&t="+v[1]+"s";a.target="_blank";a.rel="noopener";
 if(o)a.setAttribute("aria-label","Ish "+(n+1)+": YouTube'da ko'rish");else{a.setAttribute("aria-hidden","true");a.tabIndex=-1}
 a.innerHTML='<img alt="'+(o?"Hojimuqon production namunasi "+(n+1):"")+'"'+(o&&!n?' fetchpriority="high"':(o&&n<4?'':' loading="lazy"'))+' decoding="async" width="480" height="360" src="https://i.ytimg.com/vi_webp/'+v[0]+'/hqdefault.webp"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="rgba(0,0,0,.5)"/><path d="M26 20l18 12-18 12z" fill="#fff"/></svg>';tr.append(a)});
-const W=()=>tr.children[0].offsetWidth+16,home=()=>{tr.style.scrollSnapType="none";tr.scrollLeft=W()*N;requestAnimationFrame(()=>tr.style.scrollSnapType="")};home();addEventListener("resize",home);
-let wt,hold=false,down=false,sx=0,s0=0,moved=0;
-tr.addEventListener("scroll",()=>{clearTimeout(wt);wt=setTimeout(()=>{if(down)return;const s=W()*N,x=tr.scrollLeft;if(x<s*.5||x>s*1.5){tr.style.scrollSnapType="none";tr.scrollLeft=x<s*.5?x+s:x-s;requestAnimationFrame(()=>tr.style.scrollSnapType="")}},150)},{passive:true});
+const per=()=>tr.children[N].getBoundingClientRect().left-tr.children[0].getBoundingClientRect().left;
+let s=0,P=0,down=false,sx=0,s0=0,moved=0,hov=false,user=0,vis=true,v=0,t0=0,wt;
+const home=()=>{s=per();tr.scrollLeft=P=s};home();addEventListener("resize",home);
+tr.addEventListener("scroll",()=>{if(!down&&Math.abs(tr.scrollLeft-P)>3)user=performance.now();clearTimeout(wt);wt=setTimeout(()=>{if(down)return;const x=tr.scrollLeft;if(x<s*.5||x>s*1.5)tr.scrollLeft=P=x<s*.5?x+s:x-s},150)},{passive:true});
 const mv=e=>{const dx=e.clientX-sx;moved=Math.max(moved,Math.abs(dx));tr.scrollLeft=s0-dx};
-const up=()=>{removeEventListener("pointermove",mv);removeEventListener("pointerup",up);removeEventListener("pointercancel",up);if(!down)return;down=false;tr.classList.remove("drag");const w=W();tr.scrollTo({left:Math.round(tr.scrollLeft/w)*w,behavior:"smooth"});setTimeout(()=>moved=0,80)};
-tr.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse"||e.button)return;down=true;moved=0;sx=e.clientX;s0=tr.scrollLeft;tr.classList.add("drag");addEventListener("pointermove",mv);addEventListener("pointerup",up);addEventListener("pointercancel",up)});
+const up=()=>{removeEventListener("pointermove",mv);removeEventListener("pointerup",up);removeEventListener("pointercancel",up);if(!down)return;down=false;user=performance.now();tr.classList.remove("drag");setTimeout(()=>moved=0,80)};
+tr.addEventListener("pointerdown",e=>{user=performance.now();if(e.pointerType!=="mouse"||e.button)return;down=true;moved=0;sx=e.clientX;s0=tr.scrollLeft;tr.classList.add("drag");addEventListener("pointermove",mv);addEventListener("pointerup",up);addEventListener("pointercancel",up)});
 tr.addEventListener("click",e=>{if(moved>6){e.preventDefault();e.stopPropagation()}},true);
-const sl=tr.parentElement;sl.onmouseenter=()=>hold=true;sl.onmouseleave=()=>hold=false;
-sl.addEventListener("touchstart",()=>hold=true,{passive:true});sl.addEventListener("touchend",()=>setTimeout(()=>hold=false,2500),{passive:true});
-if(!matchMedia("(prefers-reduced-motion:reduce)").matches)setInterval(()=>{if(!hold&&!down&&!document.hidden)tr.scrollBy({left:W(),behavior:"smooth"})},3000);
+const sl=tr.parentElement;
+sl.addEventListener("pointerenter",e=>{if(e.pointerType==="mouse")hov=true});sl.addEventListener("pointerleave",e=>{if(e.pointerType==="mouse")hov=false});
+new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(sl);
+const RM=matchMedia("(prefers-reduced-motion:reduce)").matches,VEL=40;
+const tick=t=>{requestAnimationFrame(tick);const dt=Math.min((t-t0)/1000||0,.1);t0=t;
+if(RM||!vis||document.hidden)return;
+if(down){v=0;P=tr.scrollLeft;return}
+const idle=!hov&&performance.now()-user>1800;
+v+=((idle?VEL:0)-v)*Math.min(1,dt*4);
+if(idle||v>.5){if(Math.abs(tr.scrollLeft-P)>3)P=tr.scrollLeft;P+=v*dt;if(P>=s*1.5)P-=s;tr.scrollLeft=P}else{P=tr.scrollLeft;v=0}};
+requestAnimationFrame(tick);
 const f=$("f"),msg=$("msg"),w=$("w"),MO=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"],n0=new Date();
 w.min=n0.getFullYear()+"-"+String(n0.getMonth()+1).padStart(2,"0")+"-"+String(n0.getDate()).padStart(2,"0");
 w.addEventListener("click",()=>{try{w.showPicker()}catch(_){}});
