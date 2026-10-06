@@ -64,3 +64,5 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 .mdl .nv:hover{background:rgba(255,255,255,.28);transform:scale(1.08)}.mdl .nv:active{transform:scale(.94)}
 .mdl .cnt{position:fixed;top:calc(22px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);color:#d2d2d7;font-size:.9rem;padding:6px 14px;border-radius:980px;background:rgba(255,255,255,.1);font-variant-numeric:tabular-nums}
 @media(max-width:640px){.mdl{column-gap:0}.mdl .nv{position:fixed;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:46px;height:46px}.mdl .pv{left:14px}.mdl .nx{right:14px}.mdl .yt{bottom:calc(14px + env(safe-area-inset-bottom,0px))}}
+.mdl.h .box{height:auto;width:min(calc(100vw - 210px),1120px,calc(84vh*16/9));aspect-ratio:16/9}
+@media(max-width:640px){.mdl.h .box{width:calc(100vw - 20px);border-radius:16px}}
