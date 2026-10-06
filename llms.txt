@@ -1,0 +1,30 @@
+# Nodatiy — Hojimuqon Xalilov Vahobjon o'g'li
+
+> Hojimuqon (Nodatiy) — O'zbekistondagi videograf va montajchi. Bizneslar va ekspertlar uchun podcast va YouTube production qiladi: syomka, ovoz, yorug'lik, montaj va nashr. 3+ yillik tajriba, 50+ professional podkast.
+
+English: Hojimuqon (Nodatiy) is a videographer and video editor in Uzbekistan. He produces podcasts and YouTube content for businesses and experts: filming, sound, lighting, editing and publishing.
+Русский: Hojimuqon (Nodatiy) — видеограф и монтажёр из Узбекистана. Делает продакшн подкастов и YouTube-контента для бизнеса и экспертов: съёмка, звук, свет, монтаж и публикация.
+
+Sayt tili: o'zbek (lotin yozuvi). Rasmiy sayt: https://nodatiy.com/
+
+## Sahifalar
+- [Bosh sahifa](https://nodatiy.com/): xizmatlar, qilingan ishlar, loyihalar, texnika, buyurtma formasi
+
+## Xizmatlar
+- [Podcast production](https://nodatiy.com/xizmatlar/podcast-production/): Ko'p kamerali syomka, toza ovoz, yorug'lik va montaj.
+- [YouTube kontent](https://nodatiy.com/xizmatlar/youtube-kontent/): Intervyu va suhbatlar, kanal uchun tayyor video va nashr qilish.
+- [Reels va short-form](https://nodatiy.com/xizmatlar/reels-short-form/): Uzun suhbatdan qisqa, e'tiborni ushlaydigan videolar.
+- [Tadbir syomkasi](https://nodatiy.com/xizmatlar/tadbir-syomkasi/): Konferensiya, uchrashuv va yopiq tadbirlarni suratga olish.
+- [Travel va event video](https://nodatiy.com/xizmatlar/travel-event-video/): Safar va ekspeditsiyalardan emotsiyaga boy kontent.
+- [Online kurs kontenti](https://nodatiy.com/xizmatlar/online-kurs-kontenti/): Darslarni suratga olish va tushunarli qilib montaj qilish.
+
+## Aloqa
+- Telegram: https://t.me/Hojimuqonn
+- Instagram: https://www.instagram.com/nodatiy/
+- YouTube: https://www.youtube.com/@nodatiy
+- Telefon: +998 20 011 91 81
+- Buyurtma formasi: https://nodatiy.com/#buyurtma
+
+## Optional
+- [To'liq tavsif (barcha ma'lumot bir faylda)](https://nodatiy.com/llms-full.txt)
+- [Sitemap](https://nodatiy.com/sitemap.xml)

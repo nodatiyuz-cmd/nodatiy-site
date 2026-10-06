@@ -27,3 +27,6 @@ Framework: None. Build command: bo'sh. Build output directory: `/` (bo'sh qoldir
 `xizmatlar/<xizmat>/index.html` sahifalari `tools/build_services.py` skripti orqali yaratiladi. Videolar qo'shish: skriptdagi `VIDEOS` lug'atiga `("YouTube ID", boshlanish_soniyasi, "Sarlavha")` qo'shib, `python3 tools/build_services.py` ni ishga tushiring. Skript `sitemap.xml` ni ham yangilaydi.
 
 Reels (9:16) bo'limi: `VERTICAL` ro'yxatidagi xizmatlar vertikal kartalar bilan chiqadi, karta bosilganda video sayt ichidagi pleyerda ochiladi (`tools/modal.html`). Muqovani qo'lda almashtirish uchun `assets/reels/<YouTube ID>.webp` fayl qo'ying.
+
+## AI va agentlar uchun
+`robots.txt` AI qidiruv botlariga ochiq. `llms.txt` va `llms-full.txt` fayllari `python3 tools/build_services.py` orqali yaratiladi (matnlari skript oxirida; saytdagi ma'lumot o'zgarsa, ularni ham yangilang). Xizmat sahifalarida `ItemList` JSON-LD bor.

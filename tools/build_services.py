@@ -5,7 +5,7 @@ Videolar qo'shish: VIDEOS ichida kerakli xizmatga ("YouTube ID", boshlanish_soni
 import html, json, os
 BASE = "https://nodatiy.com"
 NAME = "Hojimuqon Xalilov Vahobjon o'g'li"
-LASTMOD = "2026-10-05"
+LASTMOD = "2026-10-06"
 SERVICES = [
  ("podcast-production","Podcast production","Podcast production","Ko'p kamerali syomka, toza ovoz, yorug'lik va montaj.",
   "Podcast uchun ko'p kamerali syomka, toza ovoz, to'g'ri yorug'lik va montaj. Suratga olishdan YouTube'ga chiqarishgacha bo'lgan jarayonni o'zim boshqaraman.",
@@ -86,6 +86,9 @@ def page(s):
     ld=json.dumps({"@context":"https://schema.org","@graph":[
       {"@type":"Service","name":title,"description":lead,"url":url,"areaServed":"UZ","provider":{"@type":"Person","name":NAME,"alternateName":"Hojimuqon","url":BASE+"/"}},
       {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Bosh sahifa","item":BASE+"/"},{"@type":"ListItem","position":2,"name":"Xizmatlar","item":BASE+"/#xizmatlar"},{"@type":"ListItem","position":3,"name":title,"item":url}]}]},ensure_ascii=False,separators=(',',':'))
+    _g=json.loads(ld)
+    if vids: _g["@graph"].append({"@type":"ItemList","name":title+": qilingan ishlar","numberOfItems":len(vids),"itemListElement":[{"@type":"ListItem","position":i+1,"name":(v[2] if len(v)>2 and v[2] else title),"url":(f"https://www.youtube.com/shorts/{v[0]}" if vert else f"https://www.youtube.com/watch?v={v[0]}")} for i,v in enumerate(vids)]})
+    ld=json.dumps(_g,ensure_ascii=False,separators=(',',':'))
     full=f"{title} | Hojimuqon, Nodatiy"
     return f'''<!DOCTYPE html>
 <html lang="uz">
@@ -96,6 +99,7 @@ def page(s):
 <meta name="description" content="{e(lead)}">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <link rel="canonical" href="{url}">
+<link rel="alternate" type="text/markdown" href="/llms-full.txt" title="Sayt tavsifi (AI va agentlar uchun)">
 <link rel="icon" href="/assets/icon-nk-96.png" type="image/png" sizes="96x96">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -146,3 +150,69 @@ sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.o
 for u,p,img in urls:
     sm+=f'  <url>\n    <loc>{u}</loc>\n    <lastmod>{LASTMOD}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>{p}</priority>\n'+(f'    <image:image><image:loc>{BASE}/assets/og-3.jpg</image:loc></image:image>\n' if img else '')+'  </url>\n'
 open("sitemap.xml","w").write(sm+'</urlset>\n'); print("Yaratildi:",len(SERVICES),"sahifa + sitemap")
+
+
+# ---------------- AI va agentlar uchun matnli fayllar: llms.txt, llms-full.txt ----------------
+# Diqqat: quyidagi matnlar saytdagi ma'lumotlar bilan bir xil bo'lishi kerak (index.html).
+def _vurl(slug,v):
+    if slug in VERTICAL: return f"https://www.youtube.com/shorts/{v[0]}"
+    return f"https://www.youtube.com/watch?v={v[0]}"+(f"&t={v[1]}s" if v[1] else "")
+PHONE="+998 20 011 91 81"; TG="https://t.me/Hojimuqonn"; IG="https://www.instagram.com/nodatiy/"; YT="https://www.youtube.com/@nodatiy"
+SUM_UZ="Hojimuqon (Nodatiy) — O'zbekistondagi videograf va montajchi. Bizneslar va ekspertlar uchun podcast va YouTube production qiladi: syomka, ovoz, yorug'lik, montaj va nashr. 3+ yillik tajriba, 50+ professional podkast."
+SUM_EN="English: Hojimuqon (Nodatiy) is a videographer and video editor in Uzbekistan. He produces podcasts and YouTube content for businesses and experts: filming, sound, lighting, editing and publishing."
+SUM_RU="Русский: Hojimuqon (Nodatiy) — видеограф и монтажёр из Узбекистана. Делает продакшн подкастов и YouTube-контента для бизнеса и экспертов: съёмка, звук, свет, монтаж и публикация."
+short=f"# Nodatiy — {NAME}\n\n> {SUM_UZ}\n\n{SUM_EN}\n{SUM_RU}\n\nSayt tili: o'zbek (lotin yozuvi). Rasmiy sayt: {BASE}/\n\n## Sahifalar\n- [Bosh sahifa]({BASE}/): xizmatlar, qilingan ishlar, loyihalar, texnika, buyurtma formasi\n"
+short+="\n## Xizmatlar\n"+"".join(f"- [{t}]({BASE}/xizmatlar/{sl}/): {sh}\n" for sl,t,g,sh,ld_,pt in SERVICES)
+short+=f"\n## Aloqa\n- Telegram: {TG}\n- Instagram: {IG}\n- YouTube: {YT}\n- Telefon: {PHONE}\n- Buyurtma formasi: {BASE}/#buyurtma\n\n## Optional\n- [To'liq tavsif (barcha ma'lumot bir faylda)]({BASE}/llms-full.txt)\n- [Sitemap]({BASE}/sitemap.xml)\n"
+open("llms.txt","w").write(short)
+full=f"# Nodatiy — {NAME} (to'liq tavsif)\n\n> {SUM_UZ}\n\n{SUM_EN}\n{SUM_RU}\n\nRasmiy sayt: {BASE}/ . Sayt tili: o'zbek (lotin yozuvi). Yangilangan: {LASTMOD}.\n"
+full+=f"""
+## Kim bu?
+{NAME} (Hojimuqon, brend: Nodatiy) — videograf va montajchi. Yo'lini PDP Academy'da stajyorlikdan boshlagan, keyin to'qqiz oy shu yerda o'quv darslari, intervyu va tadbirlarni suratga olgan. Hozir Fikr Yetakchilari va Soha Vakili podcast kabi loyihalarda ishlaydi. Vizual va audio sifatiga alohida e'tibor beradi. Texnik ijro bilan cheklanmaydi: opening, montaj va umumiy kontent yechimlari bo'yicha maslahat ham beradi.
+
+## Raqamlar (saytdagi ma'lumot)
+- 3+ yil tajriba
+- 50+ professional podkast
+- ~20 tadbirkor bilan safarlarda syomka
+- Podkastlarning umumiy ko'rilishi: 4 mln
+
+## Suratga olingan shaxslar (saytdagi ro'yxat)
+Podcast va intervyularni suratga olgan: Abdukarim Mirzayev, Ramazon Temirov, Abror Muxtor Aliy, Mirshakar Fayzulloyev, Sarvar Karimov, Hikmat Abdurahmonov, Laziz Adhamov, Hasanxon Yahyo Abdulmajid domla.
+
+## Ishlangan loyihalar
+PDP Academy, Fikr Yetakchilari, Soha Vakili podcast, USAT University, TEAM University, Triple Talks, TUT Market.
+
+## Texnika
+- Kameralar: Sony FX3, Sony FX30, Sony A7 IV, Sony A7 III, Sony A7S III
+- Dasturlar: Adobe Premiere Pro, DaVinci Resolve, Adobe After Effects
+
+## Xizmatlar va qilingan ishlar
+"""
+for sl,t,g,sh,ld_,pt in SERVICES:
+    full+=f"\n### {t}\nSahifa: {BASE}/xizmatlar/{sl}/\n{ld_}\nNimalar kiradi: {', '.join(pt)}.\n"
+    vs=VIDEOS.get(sl,[])
+    if vs:
+        full+="Qilingan ishlar (YouTube):\n"+"".join(f"- [{(v[2] if len(v)>2 and v[2] else t)}]({_vurl(sl,v)})\n" for v in vs)
+    else:
+        full+="Bu bo'limdagi ishlar tez orada qo'shiladi.\n"
+full+=f"""
+## Buyurtma berish va aloqa
+- Buyurtma formasi: {BASE}/#buyurtma (maydonlar: ism, aloqa, maqsad, qachonga kerak, byudjet)
+- Telegram: {TG}
+- Instagram: {IG}
+- YouTube kanal: {YT}
+- Telefon: {PHONE}
+
+## Savol-javob
+**Hojimuqon kim?** O'zbekistondagi videograf va montajchi; podcast va YouTube production bilan shug'ullanadi.
+
+**Qanday xizmatlar bor?** Podcast production, YouTube kontent, Reels va short-form, tadbir syomkasi, travel va event video, online kurs kontenti.
+
+**Qaysi texnikada ishlaydi?** Sony FX3, FX30, A7 IV, A7 III, A7S III kameralari; Adobe Premiere Pro, DaVinci Resolve va Adobe After Effects dasturlari.
+
+**Qaysi loyihalarda ishlagan?** PDP Academy, Fikr Yetakchilari, Soha Vakili podcast, USAT University, TEAM University, Triple Talks, TUT Market.
+
+**Qanday buyurtma beraman yoki bog'lanaman?** {BASE}/#buyurtma formasi, Telegram ({TG}), Instagram ({IG}) yoki telefon ({PHONE}) orqali.
+"""
+open("llms-full.txt","w").write(full)
+print("llms.txt:",len(short),"belgi | llms-full.txt:",len(full),"belgi")
