@@ -247,12 +247,12 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 <footer>© 2026 Hojimuqon Xalilov Vahobjon o'g'li, nodatiy.com<br><a href="/credits.html">Rasm mualliflari</a></footer>
 
 <script>
-const V=[["L2YAq8itUDM",7256],["PuxD8ThC3-U",3225],["GQxH5K4hQxQ",38],["OdDpfLR6Ye8",23],["zWl2hJdDJss",3357],["VeqjshKcRYI",1265]];
+const V=[["L2YAq8itUDM",7256],["PuxD8ThC3-U",3225],["GQxH5K4hQxQ",38],["OdDpfLR6Ye8",23],["zWl2hJdDJss",3357],["VeqjshKcRYI",1265],["wyULmvkAKmo",17],["_KWBw6mrXLU",4],["bsPky9leQ3o",1045],["gV_9UrX5TlU",2],["rUyQ7KiMm3U",5],["9qGSB5K0Mgw",0],["7FcBJMtUiH4",0],["WWQlabnxy6Q",8],["fCoziXAD0R8",1199]];
 const SHEET_URL=""; /* Google Apps Script manzili shu yerga qo'yiladi */
 const $=id=>document.getElementById(id),tr=$("tr"),N=V.length;
 for(let s=0;s<3;s++)V.forEach((v,n)=>{const a=document.createElement("a"),o=s==1;a.className="card";a.draggable=false;a.href="https://www.youtube.com/watch?v="+v[0]+"&t="+v[1]+"s";a.target="_blank";a.rel="noopener";
 if(o)a.setAttribute("aria-label","Ish "+(n+1)+": YouTube'da ko'rish");else{a.setAttribute("aria-hidden","true");a.tabIndex=-1}
-a.innerHTML='<img alt="'+(o?"Hojimuqon production namunasi "+(n+1):"")+'"'+(o&&!n?' fetchpriority="high"':'')+' decoding="async" width="480" height="360" src="https://i.ytimg.com/vi_webp/'+v[0]+'/hqdefault.webp"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="rgba(0,0,0,.5)"/><path d="M26 20l18 12-18 12z" fill="#fff"/></svg>';tr.append(a)});
+a.innerHTML='<img alt="'+(o?"Hojimuqon production namunasi "+(n+1):"")+'"'+(o&&!n?' fetchpriority="high"':(o&&n<4?'':' loading="lazy"'))+' decoding="async" width="480" height="360" src="https://i.ytimg.com/vi_webp/'+v[0]+'/hqdefault.webp"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="rgba(0,0,0,.5)"/><path d="M26 20l18 12-18 12z" fill="#fff"/></svg>';tr.append(a)});
 const W=()=>tr.children[0].offsetWidth+16,home=()=>{tr.style.scrollSnapType="none";tr.scrollLeft=W()*N;requestAnimationFrame(()=>tr.style.scrollSnapType="")};home();addEventListener("resize",home);
 let wt,hold=false,down=false,sx=0,s0=0,moved=0;
 tr.addEventListener("scroll",()=>{clearTimeout(wt);wt=setTimeout(()=>{if(down)return;const s=W()*N,x=tr.scrollLeft;if(x<s*.5||x>s*1.5){tr.style.scrollSnapType="none";tr.scrollLeft=x<s*.5?x+s:x-s;requestAnimationFrame(()=>tr.style.scrollSnapType="")}},150)},{passive:true});
