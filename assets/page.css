@@ -66,3 +66,4 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 @media(max-width:640px){.mdl{column-gap:0}.mdl .nv{position:fixed;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:46px;height:46px}.mdl .pv{left:14px}.mdl .nx{right:14px}.mdl .yt{bottom:calc(14px + env(safe-area-inset-bottom,0px))}}
 .mdl.h .box{height:auto;width:min(calc(100vw - 210px),1120px,calc(84vh*16/9));aspect-ratio:16/9}
 @media(max-width:640px){.mdl.h .box{width:calc(100vw - 20px);border-radius:16px}}
+.vcard:focus-visible{outline-offset:-3px}

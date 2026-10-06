@@ -66,6 +66,7 @@ nav a{text-decoration:none}nav a:hover{color:#fff}
 .track.drag{cursor:grabbing;scroll-snap-type:none}
 .card{position:relative;flex:0 0 calc((100% - 32px)/3);aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,.08);display:block;scroll-snap-align:start}
 .card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;pointer-events:none;-webkit-user-drag:none}
+.card:focus-visible{outline-offset:-3px}
 .card:hover img{transform:scale(1.04)}
 .card svg{position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px}
 .side{display:flex;flex-direction:column;gap:16px;align-self:start}
@@ -168,7 +169,7 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 
 <section id="ishlar" style="padding-top:40px"><div class="wrap">
 <h2>Qilingan ishlar</h2>
-<p class="lead">Podcast, intervyu va YouTube kanallar uchun suratga olingan ishlardan namunalar. Ustiga bosing, video YouTube'da ochiladi.</p>
+<p class="lead">Podcast, intervyu va YouTube kanallar uchun suratga olingan ishlardan namunalar. Ustiga bosing, video shu yerning o'zida ochiladi.</p>
 <div class="vp" id="vp"><div class="slider"><div class="track" id="tr"></div></div>
 </div></section>
 
@@ -264,10 +265,10 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 
 <div class="mdl h" id="mdl" role="dialog" aria-modal="true" aria-label="Video" hidden><button class="x" id="mx" aria-label="Yopish">✕</button><span class="cnt" id="mc" aria-live="polite"></span><button class="nv pv" id="mp" aria-label="Oldingi video"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><div class="box"><iframe id="mf" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><button class="nv nx" id="mn" aria-label="Keyingi video"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button><a class="yt" id="my" target="_blank" rel="noopener">YouTube'da ochish</a></div>
 <script>
-const V=[["L2YAq8itUDM",7256],["PuxD8ThC3-U",3225],["GQxH5K4hQxQ",38],["OdDpfLR6Ye8",23],["zWl2hJdDJss",3357],["VeqjshKcRYI",1265],["wyULmvkAKmo",17],["_KWBw6mrXLU",4],["bsPky9leQ3o",1045],["gV_9UrX5TlU",2],["rUyQ7KiMm3U",5],["9qGSB5K0Mgw",0],["7FcBJMtUiH4",0],["WWQlabnxy6Q",8],["fCoziXAD0R8",1199]];
+const V=[["L2YAq8itUDM",0],["PuxD8ThC3-U",0],["GQxH5K4hQxQ",0],["OdDpfLR6Ye8",0],["zWl2hJdDJss",0],["VeqjshKcRYI",0],["wyULmvkAKmo",0],["_KWBw6mrXLU",0],["bsPky9leQ3o",0],["gV_9UrX5TlU",0],["rUyQ7KiMm3U",0],["9qGSB5K0Mgw",0],["7FcBJMtUiH4",0],["WWQlabnxy6Q",0],["fCoziXAD0R8",0]];
 const SHEET_URL=""; /* Google Apps Script manzili shu yerga qo'yiladi */
 const $=id=>document.getElementById(id),tr=$("tr"),N=V.length;
-for(let s=0;s<3;s++)V.forEach((v,n)=>{const a=document.createElement("a"),o=s==1;a.className="card";a.dataset.n=n;a.draggable=false;a.href="https://www.youtube.com/watch?v="+v[0]+"&t="+v[1]+"s";a.target="_blank";a.rel="noopener";
+for(let s=0;s<3;s++)V.forEach((v,n)=>{const a=document.createElement("a"),o=s==1;a.className="card";a.dataset.n=n;a.draggable=false;a.href="https://www.youtube.com/watch?v="+v[0]+(v[1]?"&t="+v[1]+"s":"");a.target="_blank";a.rel="noopener";
 if(o)a.setAttribute("aria-label","Ish "+(n+1)+": YouTube'da ko'rish");else{a.setAttribute("aria-hidden","true");a.tabIndex=-1}
 a.innerHTML='<img alt="'+(o?"Hojimuqon production namunasi "+(n+1):"")+'"'+(o&&!n?' fetchpriority="high"':(o&&n<4?'':' loading="lazy"'))+' decoding="async" width="480" height="360" src="https://i.ytimg.com/vi_webp/'+v[0]+'/hqdefault.webp"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="rgba(0,0,0,.5)"/><path d="M26 20l18 12-18 12z" fill="#fff"/></svg>';tr.append(a)});
 const per=()=>tr.children[N].getBoundingClientRect().left-tr.children[0].getBoundingClientRect().left;
