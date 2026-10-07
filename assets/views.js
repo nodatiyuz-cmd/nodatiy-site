@@ -1,11 +1,16 @@
 /* YouTube ko'rilish sonini kartalarga qo'shadi: /api/views dan oladi. Xato bo'lsa jim o'tadi. */
 (()=>{
-/* Umumiy ko'rilish ("videolarning umumiy ko'rilishi") — saytdagi hamma videolar yig'indisi, jonli */
+/* Umumiy ko'rilish ("videolarning umumiy ko'rilishi"): saytdagi hamma videolar yig'indisi, ANIQ son, jonli */
 const tv=document.getElementById("tv");
 if(tv)fetch("/api/views?total=1").then(r=>r.ok?r.json():{}).then(d=>{
   if(typeof d.total!=="number"||d.total<1e6)return; /* kam bo'lsa, HTML dagi qiymat qoladi */
-  const set=()=>{tv.textContent=(d.total<1e7?String(Math.floor(d.total/1e5)/10).replace(".",","):String(Math.floor(d.total/1e6)))+" mln";tv.title=d.total.toLocaleString("en-US").replace(/,/g," ")+" marta ko'rilgan"};
-  tv.parentElement.classList.contains("in")?setTimeout(set,1700):set(); /* sanash animatsiyasi tugagach */
+  const T=d.total,fm=n=>Math.round(n).toLocaleString("en-US").replace(/,/g,"\u00a0"); /* 2 194 675 */
+  const run=()=>{
+    if(matchMedia("(prefers-reduced-motion:reduce)").matches){tv.textContent=fm(T);return}
+    const t0=performance.now(),D=1800,step=t=>{const p=Math.min(1,(t-t0)/D);tv.textContent=fm(T*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)};
+    requestAnimationFrame(step);
+  };
+  const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){io.disconnect();run()}},{threshold:.6});io.observe(tv); /* ko'ringanda sanaydi */
 }).catch(()=>{});
 const els=[...document.querySelectorAll("a.vcard[data-id],a.card[data-id]")];
 if(!els.length)return;

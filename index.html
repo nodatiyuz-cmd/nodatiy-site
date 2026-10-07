@@ -180,6 +180,8 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 .vw{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 8px;border-radius:980px;background:rgba(0,0,0,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;font-size:.78rem;line-height:1.3;pointer-events:none;animation:fade .4s}
 .vw b{font-weight:600}
 .vcard .vw svg,.card .vw svg{position:static!important;width:13px!important;height:13px!important;margin:0!important;opacity:.85}
+#tv{font-variant-numeric:tabular-nums;white-space:nowrap}
+@media(max-width:520px){.stats b{font-size:clamp(1.35rem,7.4vw,2.3rem)}}
 </style>
 </head>
 <body>
@@ -350,7 +352,7 @@ catch(_){msg.textContent="Yuborib bo'lmadi. Telegram orqali yozing: @Hojimuqonn"
 (()=>{
 const g=".slider,.logos,#hamkorlar .mute,.stats>div,.svc a,.about>div,.photos,.g,.gh,form,#aloqa p,#aloqa .btns,.bsh,.bs,section h2",cnt=new Map,io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;io.unobserve(el);el.classList.add("in");const b=el.querySelector("b");if(b&&el.parentElement.className=="stats")count(b);setTimeout(()=>el.classList.remove("rv","in"),1500)}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
 document.querySelectorAll(g).forEach(el=>{const p=el.parentElement,n=cnt.get(p)||0;cnt.set(p,n+1);el.style.setProperty("--d",Math.min(n,5)*.09+"s");el.classList.add("rv");io.observe(el)});
-function count(b){const m=b.textContent.match(/^(\D*)(\d+)(.*)$/);if(!m||matchMedia("(prefers-reduced-motion:reduce)").matches)return;const to=+m[2],t0=performance.now();
+function count(b){if(b.id==="tv")return;const m=b.textContent.match(/^(\D*)(\d+)(.*)$/);if(!m||matchMedia("(prefers-reduced-motion:reduce)").matches)return;const to=+m[2],t0=performance.now();
 const f=t=>{const k=Math.min((t-t0)/1300,1),v=Math.round(to*(1-Math.pow(1-k,3)));b.textContent=m[1]+v+m[3];if(k<1)requestAnimationFrame(f)};b.textContent=m[1]+"0"+m[3];requestAnimationFrame(f)}
 const hd=document.querySelector("header");addEventListener("scroll",()=>hd.classList.toggle("sc",scrollY>8),{passive:true});
 })();
