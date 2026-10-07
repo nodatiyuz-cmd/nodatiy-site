@@ -174,7 +174,7 @@ full+=f"""
 - 3+ yil tajriba
 - 50+ professional podkast
 - ~20 tadbirkor bilan safarlarda syomka
-- Podkastlarning umumiy ko'rilishi: 4 mln
+- Saytdagi videolarning umumiy ko'rilishi: 2 mln+ (sayt buni YouTube'dan jonli hisoblab turadi)
 
 ## Suratga olingan shaxslar (saytdagi ro'yxat)
 Podcast va intervyularni suratga olgan: Abdukarim Mirzayev, Ramazon Temirov, Abror Muxtor Aliy, Mirshakar Fayzulloyev, Sarvar Karimov, Hikmat Abdurahmonov, Laziz Adhamov, Hasanxon Yahyo Abdulmajid domla.

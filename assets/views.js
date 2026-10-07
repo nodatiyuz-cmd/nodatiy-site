@@ -1,5 +1,12 @@
 /* YouTube ko'rilish sonini kartalarga qo'shadi: /api/views dan oladi. Xato bo'lsa jim o'tadi. */
 (()=>{
+/* Umumiy ko'rilish ("videolarning umumiy ko'rilishi") — saytdagi hamma videolar yig'indisi, jonli */
+const tv=document.getElementById("tv");
+if(tv)fetch("/api/views?total=1").then(r=>r.ok?r.json():{}).then(d=>{
+  if(typeof d.total!=="number"||d.total<1e6)return; /* kam bo'lsa, HTML dagi qiymat qoladi */
+  const set=()=>{tv.textContent=(d.total<1e7?String(Math.floor(d.total/1e5)/10).replace(".",","):String(Math.floor(d.total/1e6)))+" mln";tv.title=d.total.toLocaleString("en-US").replace(/,/g," ")+" marta ko'rilgan"};
+  tv.parentElement.classList.contains("in")?setTimeout(set,1700):set(); /* sanash animatsiyasi tugagach */
+}).catch(()=>{});
 const els=[...document.querySelectorAll("a.vcard[data-id],a.card[data-id]")];
 if(!els.length)return;
 const MIN=1000; /* shundan kam ko'rilgan videolarda belgi chiqmaydi (0 ham) */
