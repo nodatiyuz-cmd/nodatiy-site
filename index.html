@@ -15,6 +15,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="canonical" href="https://nodatiy.com/">
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Sayt tavsifi (AI va agentlar uchun)">
+<script src="/assets/views.js" defer></script>
 <meta name="theme-color" content="#060607">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nodatiy.com/">
@@ -176,6 +177,9 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 .mw a:hover{background:#2c2c2f;transform:translateY(-2px)}.mw a:hover::after{transform:translateX(3px);color:#fff}
 .mw a:active{transform:scale(.97)}
 @media(max-width:520px){.mw a{padding:10px 16px;font-size:.92rem}}
+.vw{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 8px;border-radius:980px;background:rgba(0,0,0,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;font-size:.78rem;line-height:1.3;pointer-events:none;animation:fade .4s}
+.vw b{font-weight:600}
+.vcard .vw svg,.card .vw svg{position:static!important;width:13px!important;height:13px!important;margin:0!important;opacity:.85}
 </style>
 </head>
 <body>
@@ -297,7 +301,7 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 const V=[["L2YAq8itUDM",0],["PuxD8ThC3-U",0],["GQxH5K4hQxQ",0],["OdDpfLR6Ye8",0],["zWl2hJdDJss",0],["VeqjshKcRYI",0],["wyULmvkAKmo",0],["_KWBw6mrXLU",0],["bsPky9leQ3o",0],["gV_9UrX5TlU",0],["rUyQ7KiMm3U",0],["9qGSB5K0Mgw",0],["7FcBJMtUiH4",0],["WWQlabnxy6Q",0],["fCoziXAD0R8",0]];
 const SHEET_URL=""; /* Google Apps Script manzili shu yerga qo'yiladi */
 const $=id=>document.getElementById(id),tr=$("tr"),N=V.length;
-for(let s=0;s<3;s++)V.forEach((v,n)=>{const a=document.createElement("a"),o=s==1;a.className="card";a.dataset.n=n;a.draggable=false;a.href="https://www.youtube.com/watch?v="+v[0]+(v[1]?"&t="+v[1]+"s":"");a.target="_blank";a.rel="noopener";
+for(let s=0;s<3;s++)V.forEach((v,n)=>{const a=document.createElement("a"),o=s==1;a.className="card";a.dataset.n=n;a.dataset.id=v[0];a.draggable=false;a.href="https://www.youtube.com/watch?v="+v[0]+(v[1]?"&t="+v[1]+"s":"");a.target="_blank";a.rel="noopener";
 if(o)a.setAttribute("aria-label","Ish "+(n+1)+": YouTube'da ko'rish");else{a.setAttribute("aria-hidden","true");a.tabIndex=-1}
 a.innerHTML='<img alt="'+(o?"Hojimuqon production namunasi "+(n+1):"")+'"'+(o&&!n?' fetchpriority="high"':(o&&n<4?'':' loading="lazy"'))+' decoding="async" width="480" height="360" src="https://i.ytimg.com/vi_webp/'+v[0]+'/hqdefault.webp"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="rgba(0,0,0,.5)"/><path d="M26 20l18 12-18 12z" fill="#fff"/></svg>';tr.append(a)});
 const per=()=>tr.children[N].getBoundingClientRect().left-tr.children[0].getBoundingClientRect().left;

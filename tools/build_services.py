@@ -2,7 +2,7 @@
 """Xizmat sahifalarini (xizmatlar/<slug>/index.html) va sitemap.xml ni yaratadi.
 Ishlatish: python3 tools/build_services.py
 Videolar qo'shish: VIDEOS ichida kerakli xizmatga ("YouTube ID", boshlanish_soniyasi, "Sarlavha") qo'shing."""
-import html, json, os
+import html, json, os, re
 BASE = "https://nodatiy.com"
 NAME = "Hojimuqon Xalilov Vahobjon o'g'li"
 LASTMOD = "2026-10-06"
@@ -140,7 +140,7 @@ def page(s):
 <div class="end"><h2>Loyihangizni muhokama qilamiz</h2><a class="btn" href="/?x={slug}#buyurtma">Buyurtma berish</a></div>
 </main>
 <footer>© 2026 {e(NAME)}, nodatiy.com<br><a href="/credits.html">Rasm mualliflari</a></footer>
-{MODAL if vids else ""}</body>
+{(chr(60)+"script src=\"/assets/views.js\" defer>"+chr(60)+"/script>"+chr(10)) if vids else ""}{MODAL if vids else ""}</body>
 </html>
 '''
 for s in SERVICES:
@@ -216,3 +216,14 @@ full+=f"""
 """
 open("llms-full.txt","w").write(full)
 print("llms.txt:",len(short),"belgi | llms-full.txt:",len(full),"belgi")
+
+
+# ---------------- /api/views uchun ruxsat etilgan video ID lar ----------------
+_home=re.search(r"const V=\[(.*?)\];",open("index.html").read(),re.S)
+_ids=[]
+for _l in list(VIDEOS.values())+[[(m,) for m in re.findall(r'\["([\w-]{11})",\d+\]',_home.group(1))] if _home else []]:
+    for _v in _l:
+        if _v[0] not in _ids: _ids.append(_v[0])
+os.makedirs("functions/api",exist_ok=True)
+open("functions/api/_ids.js","w").write("// Avtomatik yaratiladi (tools/build_services.py). Faqat shu videolar uchun ko'rilish soni so'raladi.\nexport const ALLOWED = "+json.dumps(_ids)+";\n")
+print("functions/api/_ids.js:",len(_ids),"ta video ID")

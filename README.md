@@ -30,3 +30,6 @@ Reels (9:16) bo'limi: `VERTICAL` ro'yxatidagi xizmatlar vertikal kartalar bilan 
 
 ## AI va agentlar uchun
 `robots.txt` AI qidiruv botlariga ochiq. `llms.txt` va `llms-full.txt` fayllari `python3 tools/build_services.py` orqali yaratiladi (matnlari skript oxirida; saytdagi ma'lumot o'zgarsa, ularni ham yangilang). Xizmat sahifalarida `ItemList` JSON-LD bor.
+
+## YouTube ko'rilish soni
+`functions/api/views.js` (Cloudflare Pages Function) YouTube Data API dan ko'rilish sonini oladi va `assets/views.js` kartalarga chiqaradi. Kalit: Cloudflare Pages → Settings → Variables and secrets → `YOUTUBE_API_KEY` (Secret, Production). Kalitni kodga yozmang. Kalit qo'shilgach yangi deploy kerak. Ruxsat etilgan video ID lar `functions/api/_ids.js` da (build skripti yaratadi).
