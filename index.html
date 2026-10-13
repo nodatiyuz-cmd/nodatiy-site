@@ -191,6 +191,13 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 .live small{font-size:inherit;color:#f5f5f7}
 @media(max-width:520px){.live{gap:5px;padding:3px 9px 3px 8px;font-size:.72rem}.live small{display:none}.live .sep{display:none}}
 @media(prefers-reduced-motion:reduce){.live .ld{animation:none}}
+.stats .yti{display:inline-block;width:19px;height:13.5px;margin-right:7px;vertical-align:-1.5px}
+@property --r{syntax:"<length>";inherits:false;initial-value:0px}
+@property --h{syntax:"<number>";inherits:false;initial-value:200}
+.stats b{--r:0px;--h:200;background:radial-gradient(circle max(var(--r),.01px) at var(--mx,50%) var(--my,50%),hsl(var(--h) 95% 68%),hsl(calc(var(--h) + 70) 92% 64%) 55%,hsl(calc(var(--h) + 140) 90% 62% / 0) 100%),linear-gradient(currentColor,currentColor);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;transition:--r .5s cubic-bezier(.2,.7,.2,1)}
+.stats b.hot{--r:150px;animation:hueSpin 3.2s linear infinite}
+@keyframes hueSpin{to{--h:560}}
+@media(prefers-reduced-motion:reduce){.stats b.hot{animation:none}}
 </style>
 </head>
 <body>
@@ -230,7 +237,7 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 <div><b>3+ yil</b><span>tajriba</span></div>
 <div><b>50+</b><span>professional podkast</span></div>
 <div><b>~20</b><span>tadbirkor bilan safarlarda syomka</span></div>
-<div><b id="tv">3 mln+</b><span>YouTube'dagi umumiy ko'rilish</span><em class="live" title="Bu raqam YouTube'dan jonli yangilanadi"><i class="ld" aria-hidden="true"></i>jonli<u class="sep" aria-hidden="true"></u><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="4.5" fill="#ff0033"/><path d="M10 9l5.5 3-5.5 3z" fill="#fff"/></svg><small>YouTube</small></em></div>
+<div><b id="tv">3 mln+</b><span><svg class="yti" viewBox="1.5 4.5 21 15" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="4.5" fill="#ff0033"/><path d="M10 9l5.5 3-5.5 3z" fill="#fff"/></svg>YouTube'dagi umumiy ko'rilish</span><em class="live" title="Bu raqam YouTube'dan jonli yangilanadi"><i class="ld" aria-hidden="true"></i>jonli</em></div>
 </div>
 <div class="bsh"><h3>Kamera ortida</h3><p>Syomka maydonchalari va safarlardan kadrlar. Ustiga bosing, kattalashadi.</p></div>
 <div class="bs"><a href="assets/backstage/bs-1.webp" style="--r:1.5"><img loading="lazy" decoding="async" src="assets/backstage/bs-1-t.webp" width="820" height="547" alt="Hojimuqon kamera bilan, tabiatda syomka paytida guruh suratida"></a><a href="assets/backstage/bs-2.webp" style="--r:1.27" data-cap="Fikr yetakchilari tadbirida · Hikmat Abdurahmonov bilan"><img loading="lazy" decoding="async" src="assets/backstage/bs-2-t.webp" width="820" height="645" alt="Fikr yetakchilari tadbirida Hojimuqon va Hikmat Abdurahmonov"></a><a href="assets/backstage/bs-3.webp" style="--r:1.527" data-cap="Fikr yetakchilari · Tog' safari 3.0"><img loading="lazy" decoding="async" src="assets/backstage/bs-3-t.webp" width="820" height="537" alt="Fikr yetakchilari jamoasi va mehmon, Tog' safari 3.0"></a><a href="assets/backstage/bs-4.webp" style="--r:1.481"><img loading="lazy" decoding="async" src="assets/backstage/bs-4-t.webp" width="820" height="554" alt="Hojimuqon tog' daryosi bo'yida safar syomkasi paytida"></a><a href="assets/backstage/bs-5.webp" style="--r:1.0"><img loading="lazy" decoding="async" src="assets/backstage/bs-5-t.webp" width="820" height="820" alt="Backstage: syomkadan keyin mehmon bilan"></a><a href="assets/backstage/bs-6.webp" style="--r:1.0"><img loading="lazy" decoding="async" src="assets/backstage/bs-6-t.webp" width="820" height="820" alt="Backstage: syomka maydonchasida mehmon bilan"></a><a href="assets/backstage/bs-7.webp" style="--r:1.0"><img loading="lazy" decoding="async" src="assets/backstage/bs-7-t.webp" width="820" height="820" alt="Safar paytida mehmon bilan"></a></div>
@@ -340,6 +347,9 @@ BS.forEach(a=>a.addEventListener("click",e=>{if(e.metaKey||e.ctrlKey||e.shiftKey
 $("lbx").onclick=bclose;$("lbp").onclick=()=>bshow(bi-1);$("lbn").onclick=()=>bshow(bi+1);LB.addEventListener("click",e=>{if(e.target===LB)bclose()});
 addEventListener("keydown",e=>{if(LB.hidden)return;if(e.key==="Escape")bclose();else if(e.key==="ArrowLeft"){e.preventDefault();bshow(bi-1)}else if(e.key==="ArrowRight"){e.preventDefault();bshow(bi+1)}});
 LB.addEventListener("touchstart",e=>{bx0=e.changedTouches[0].clientX},{passive:true});LB.addEventListener("touchend",e=>{const d=e.changedTouches[0].clientX-bx0;if(Math.abs(d)>55)bshow(bi+(d<0?1:-1))},{passive:true});
+document.querySelectorAll(".stats>div").forEach(c=>{const b=c.querySelector("b");if(!b)return;
+c.addEventListener("pointermove",e=>{if(e.pointerType!=="mouse")return;const r=b.getBoundingClientRect();b.style.setProperty("--mx",(e.clientX-r.left)+"px");b.style.setProperty("--my",(e.clientY-r.top)+"px");b.classList.add("hot")});
+c.addEventListener("pointerleave",()=>b.classList.remove("hot"))});
 const RM=matchMedia("(prefers-reduced-motion:reduce)").matches,VEL=40;
 const tick=t=>{requestAnimationFrame(tick);const dt=Math.min((t-t0)/1000||0,.1);t0=t;
 if(RM||!vis||document.hidden||mo)return;
