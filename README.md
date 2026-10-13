@@ -33,3 +33,6 @@ Reels (9:16) bo'limi: `VERTICAL` ro'yxatidagi xizmatlar vertikal kartalar bilan 
 
 ## YouTube ko'rilish soni
 `functions/api/views.js` (Cloudflare Pages Function) YouTube Data API dan ko'rilish sonini oladi va `assets/views.js` kartalarga chiqaradi. Kalit: Cloudflare Pages → Settings → Variables and secrets → `YOUTUBE_API_KEY` (Secret, Production). Kalitni kodga yozmang. Kalit qo'shilgach yangi deploy kerak. Ruxsat etilgan video ID lar `functions/api/_ids.js` da (build skripti yaratadi).
+
+## Yangi video qo'shish
+`tools/build_services.py` ichida `_add("podcast-production", [(ID, boshlanish_soniyasi, "Sarlavha"), ...])` chaqiruvi bilan qo'shing: takror ID lar avtomatik o'tkazib yuboriladi. Keyin `python3 tools/build_services.py` ni ishga tushiring: sahifalar, `llms-full.txt`, `functions/api/_ids.js` (ruxsat etilgan ID lar) yangilanadi. 18 tadan ko'p videoli sahifada dastlab 12 tasi ko'rinadi, qolganlari "Yana ko'rsatish" tugmasi bilan ochiladi.

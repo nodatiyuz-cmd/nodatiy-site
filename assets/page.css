@@ -70,3 +70,7 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 .vw{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 8px;border-radius:980px;background:rgba(0,0,0,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;font-size:.78rem;line-height:1.3;pointer-events:none;animation:fade .4s}
 .vw b{font-weight:600}
 .vcard .vw svg,.card .vw svg{position:static!important;width:13px!important;height:13px!important;margin:0!important;opacity:.85}
+.vcard[hidden]{display:none}
+.morewrap{text-align:center;margin-top:28px}
+.morebtn{font:inherit;font-weight:500;padding:12px 28px;border-radius:980px;border:1px solid rgba(255,255,255,.1);background:#1d1d1f;color:var(--text);cursor:pointer;transition:transform .3s cubic-bezier(.2,.7,.2,1),background .3s}
+.morebtn:hover{background:#2c2c2f;transform:translateY(-2px)}.morebtn:active{transform:scale(.97)}

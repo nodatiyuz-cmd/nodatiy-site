@@ -66,6 +66,55 @@ VIDEOS["podcast-production"] = [
     ('n8q4ax1RA_c', 3326, "Maktab inqirozi, so'z erkinligi ahvoli va sun'iy intellekt bilan kelajak | Azam Qahramoniy"),
     ('E3a5dKLMewE', 17, "Dinlar urushga sabab bo'ladimi? Xayrulla Umarov bilan suhbat"),
 ]
+# --- Yangi podkastlar qo'shish: takrorlar avtomatik o'tkazib yuboriladi (ID bo'yicha) ---
+def _add(slug, items):
+    have = {v[0] for v in VIDEOS[slug]}
+    for v in items:
+        if v[0] in have: print("  takror, o'tkazib yuborildi:", slug, v[0]); continue
+        VIDEOS[slug].append(tuple(v)); have.add(v[0])
+_add("podcast-production", [
+    ('RciFFb9RtkQ', 1107, 'Biznes yuragida "o\'ti" borlar uchun: Risk, sabr va soch oqartirgan yirik muvaffaqiyatlar'),
+    ('FZx6YiuLp7Y', 3, "O'zbekiston Oligarxiya yo'lini tanladimi? | Mukhammadali Makhmudov"),
+    ('PgyNt4Mb2DE', 4212, "O'zbeklar sayohat qilishdan qo'rqadimi? | Sayohatchi Abu"),
+    ('N1AdXXN-zCE', 3722, "Qadimgi topilmalar, O'zbek olimlarining og'ir kunlari"),
+    ('gYOwngFjnno', 20, "Davlat korxonalari, Xitoylik o'yinchilar, JSTdagi do'st va raqobatchilar!"),
+    ('kOwPmiT4dQw', 12, 'Tahlil | Anomal qish, Xato g‘oyalarga ergashish, sifatli ta’limsiz kelajak yo‘q! Botir Qobilov'),
+    ('qelDz0UYPpA', 2185, 'Kelajak kasblari, AES qurilishi, Amerikada startap qurish yo‘li - Nodir Ruzmatov'),
+    ('iEyfz_eXchE', 64, "Sovet Ittifoqi nega san'atga kuchli e'tibor qaratgan?"),
+    ('ragHFo6dwK0', 2, 'O’zbek StartUplarini xorij gigantlariga sotish xavflimi? (Yandex, TBC, Google)'),
+    ('uVZgl1iFdJ4', 619, "So'z erkinligi qay ahvolda (148-o'rin)?, saroy jurnalistlari, ishlamayotgan davlat kanallari, Ta'lim"),
+    ('nUfkmsByIgs', 439, 'Aholi ko‘payishi, tashqi qarz, maslahatsiz qonunlar, ko‘zi ochilmagan hokimlar - Barnogul Sanqulova'),
+    ('QWfff35EYRw', 434, 'Kouching uchun qarshi qonun, $100 minglik mijozlar, Infobiznes va infosiganlik, Boylarning muammosi'),
+    ('u82HysnDW08', 5, 'Shuhrat Rasul AES, xususiylashtirish, davlat banklari, qutblashish, demokratiya inqirozi haqida'),
+    ('Da-Iud4vsfA', 1153, 'Neyropsixolog Zarifboy Ibodullayev: Xususiy tibbiyot, depressiya va bolalar tarbiyasi haqida.'),
+    ('h6amSSTmku8', 2604, "Sun'iy intellekt, Amazon ichki sirlari va tarqoq o‘zbek diasporasi haqida"),
+    ('RUYTsHTKGEw', 3625, "Soliq, sud tizimi, 1 million dasturchi, Road24, sun'iy intellekt, startaperlar va xitoylashuv haqida"),
+    ('QfdubUcQuTU', 3038, '“Demokratiyaga kurash bilan erishiladi” | Demokratiyaga tayyor emasmiz(mi?)'),
+    ('fL2Mre6yrms', 6, "Shaxmat kuchi, tarbiyaga oid oltin gaplar, farzand va ota-ona muloqoti  - murabbiy Alisher Mo'minov"),
+    ('M8DKzxjeyjI', 3175, 'Milliy ong, dekolonizatsiya, totalitar tuzum, oila, mafkura - antropolog Ziyoda Rasulova'),
+    ('7hlHY5Ar1xg', 85, '1-mavsum yakuni: Yutuqlar, qiyinchiliklar va yangi formatlar taqdimoti'),
+    ('tS5p0adKiYU', 1569, 'SIZ BILMAGAN SOLIQ "SXEMA"LARI, "OBNALCHI"LAR VA XALQNI ALDASH - Murod Muhammedjanov'),
+    ('tTLAKXHKyAk', 51, 'Banklar faoliyati, Xususiylashtirish siyosati, Denominatsiya, JST haqida, Sanoatlashtirish'),
+    ('jtRSrBAtVww', 11, 'Rossiya va Xitoydan qochayotgan milliarderlar, Elon Musk Oq uyda, Nasiya savdo va marketpleyslar'),
+    ('kFv9tkds9N4', 92, 'Diplomsiz psixologlar tuzogʻi, Z avlod bilan konflikt, Davlat boshqaruvini psixologiyamizga ta’siri'),
+    ('psbARFkftDU', 143, 'Sxemachi tadbirkorlar, Moliyaviy savodxonlik, Xitoylik investorlar kutuvi, Dividend yechish siyosati'),
+    ('w2ixrPp_Vsg', 26, 'Jaydari biznesdan korporatsiyagacha, Biznes kouchlar, Tajribasiz konsultantlar, McKinsey keyslari'),
+    ('b6DqPCHiNDc', 7, 'Mahsulotlar nega sotilmayapti? | Eksport mutaxassisi bilan podkast'),
+    ('hsIdlpoJuCY', 44, 'Ayollar sporti, Amerikadagi imkoniyatlar, Olimpiya darajasidagi murabbiylar, O’qish yoki sport?'),
+    ('EWH5F5RCzxc', 2703, 'Parlament uchun trening, Katta qarzlarni xavflari, Yaqin Sharqdagi voqealar - Behzod Hoshimov'),
+    ('rKYF5EFSg-A', 911, "Rossiyadagi biznes holat, Davlat va tadbirkor, Oilaviy biznes, O'zbek tadbirkorlari muammosi - FYP14"),
+    ('WIAzh8B3JOI', 0, "Ta'limdagi monopolistlar, Davlat yoki xususiy ta'lim, Samarasiz islohotlar - Bahodir G'aniyev"),
+    ('3LBJcPqO_S0', 0, 'Dollar kursi kontroli, Konvertatsiya, Monopolistlar foydasi, Iqtisodiyotdagi xavf-xatarlar - FYP'),
+    ('P2RaHBB_9rU', 3982, 'Qurilishda "Маржа" tushishi, Biznes va hayot balansi, Farzand tarbiyasi va ta\'limi - Murod Nazarov'),
+])
+# har bir sahifada bir xil video ikki marta chiqmasligi uchun yakuniy tekshiruv
+for _sl in VIDEOS:
+    _seen=set(); _clean=[]
+    for _v in VIDEOS[_sl]:
+        if _v[0] in _seen: print("  takror olib tashlandi:",_sl,_v[0]); continue
+        _seen.add(_v[0]); _clean.append(_v)
+    VIDEOS[_sl]=_clean
+
 PLAY = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="rgba(0,0,0,.5)"/><path d="M26 20l18 12-18 12z" fill="#fff"/></svg>'
 e = html.escape
 VERTICAL = {"reels-short-form"}  # 9:16 (vertikal) bo'limlar: Reels/Shorts, bosilganda sayt ichida pleyer ochiladi
@@ -78,8 +127,10 @@ def page(s):
         cards=''.join(f'<a class="vcard reel" href="https://www.youtube.com/shorts/{v[0]}" data-id="{v[0]}" target="_blank" rel="noopener" aria-label="{e(v[2] if len(v)>2 and v[2] else title)}: ko\'rish"><img loading="lazy" decoding="async" width="360" height="640" alt="{e(v[2] if len(v)>2 and v[2] else title+" namunasi "+str(i+1))}" src="{cover(v[0])}">{PLAY}</a>' for i,v in enumerate(vids))
         works=f'<div class="works rl">{cards}</div>'
     elif vids:
-        cards=''.join(f'<a class="vcard" data-id="{v[0]}" data-start="{v[1]}" href="https://www.youtube.com/watch?v={v[0]}{'&amp;t='+str(v[1])+'s' if v[1] else ''}" target="_blank" rel="noopener" aria-label="{e(v[2] if len(v)>2 and v[2] else title)}: YouTube\'da ko\'rish"><img loading="lazy" decoding="async" width="480" height="360" alt="{e(v[2] if len(v)>2 and v[2] else title+" namunasi "+str(i+1))}" src="https://i.ytimg.com/vi_webp/{v[0]}/hqdefault.webp">{PLAY}</a>' for i,v in enumerate(vids))
+        cards=''.join(f'<a class="vcard" data-id="{v[0]}" data-start="{v[1]}"{' hidden' if len(vids)>18 and i>=12 else ''} href="https://www.youtube.com/watch?v={v[0]}{'&amp;t='+str(v[1])+'s' if v[1] else ''}" target="_blank" rel="noopener" aria-label="{e(v[2] if len(v)>2 and v[2] else title)}: YouTube\'da ko\'rish"><img loading="lazy" decoding="async" width="480" height="360" alt="{e(v[2] if len(v)>2 and v[2] else title+" namunasi "+str(i+1))}" src="https://i.ytimg.com/vi_webp/{v[0]}/hqdefault.webp">{PLAY}</a>' for i,v in enumerate(vids))
         works=f'<div class="works">{cards}</div>'
+        if len(vids)>18:
+            works+=f'\n<div class="morewrap"><button class="morebtn" type="button" id="mb">Yana ko\'rsatish ({len(vids)-12})</button></div>\n<script>document.getElementById("mb").onclick=function(){{document.querySelectorAll("a.vcard[hidden]").forEach(function(a){{a.hidden=false}});this.parentNode.remove()}}</script>'
     else:
         works='<div class="works%s">'%(' rl' if vert else '')+('<div class="vcard%s ph"><span>Tez orada</span></div>'%(' reel' if vert else ''))*(4 if vert else 3)+'</div>\n<p class="note">Bu bo\'limdagi ishlar tez orada qo\'shiladi. Hozircha <a href="/#ishlar">asosiy sahifadagi namunalarni</a> ko\'rishingiz mumkin.</p>'
     others=''.join(f'<a href="/xizmatlar/{o[0]}/">{e(o[1])}</a>' for o in SERVICES if o[0]!=slug)
