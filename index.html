@@ -356,11 +356,35 @@ w.min=n0.getFullYear()+"-"+String(n0.getMonth()+1).padStart(2,"0")+"-"+String(n0
 w.addEventListener("click",()=>{try{w.showPicker()}catch(_){}});
 const X={"podcast-production":"Podcast production","youtube-kontent":"YouTube kanal uchun video","reels-short-form":"Reels va short-form","tadbir-syomkasi":"Tadbir yoki safar syomkasi","travel-event-video":"Tadbir yoki safar syomkasi","online-kurs-kontenti":"Online kurs kontenti"},xq=new URLSearchParams(location.search).get("x");if(xq&&X[xq])$("g").value=X[xq];
 const fd=s=>{const p=s.split("-");return +p[2]+"-"+MO[+p[1]-1]+", "+p[0]};
-f.onsubmit=async e=>{e.preventDefault();const d=new FormData(f);if(d.get("website"))return;d.set("when",fd(d.get("when")));
-if(!SHEET_URL){const m=`Assalomu alaykum! Saytingiz orqali buyurtma qoldirmoqchiman.\n\n👤 Ism: ${d.get("name")}\n📞 Aloqa: ${d.get("contact")}\n🎯 Maqsad: ${d.get("goal")}\n📅 Qachonga: ${d.get("when")}\n💰 Byudjet: ${d.get("budget")}`;location.href="https://t.me/Hojimuqonn?text="+encodeURIComponent(m);return}
-msg.textContent="Yuborilmoqda...";
-try{await fetch(SHEET_URL,{method:"POST",mode:"no-cors",body:new URLSearchParams(d)});f.reset();msg.textContent="Rahmat! Arizangiz qabul qilindi, tez orada bog'lanaman."}
-catch(_){msg.textContent="Yuborib bo'lmadi. Telegram orqali yozing: @Hojimuqonn"}};
+const btn=f.querySelector("button[type=submit]");let busy=false;
+function fireworks(){
+if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+const cv=document.createElement("canvas");cv.setAttribute("aria-hidden","true");cv.style.cssText="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:200;transition:opacity .5s";document.body.appendChild(cv);
+const cx=cv.getContext("2d"),dpr=Math.min(devicePixelRatio||1,2);let W=0,H=0;
+const rs=()=>{W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0)};rs();addEventListener("resize",rs);
+const rk=[],pt=[],T0=performance.now(),at=[0,260,620,980,1340,1700,2060,2420];let ni=0;
+const launch=()=>{const x1=W*(.12+Math.random()*.76);rk.push({x0:x1+(Math.random()-.5)*120,x1,y1:H*(.14+Math.random()*.34),s:performance.now(),d:620+Math.random()*180,h:Math.random()*360})};
+const boom=r=>{const n=Math.round(70+Math.random()*30);for(let i=0;i<n;i++){const a=Math.random()*6.2832,sp=Math.sqrt(Math.random())*5.2+.8;pt.push({x:r.x1,y:r.y1,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,l:1,dc:.011+Math.random()*.012,h:r.h+(Math.random()-.5)*45,z:1.4+Math.random()*1.4})}};
+const ease=t=>1-Math.pow(1-t,3);
+const step=t=>{const e=t-T0;
+while(ni<at.length&&e>=at[ni]){launch();ni++}
+cx.globalCompositeOperation="destination-out";cx.fillStyle="rgba(0,0,0,.2)";cx.fillRect(0,0,W,H);
+cx.globalCompositeOperation="lighter";
+for(let i=rk.length-1;i>=0;i--){const r=rk[i],k=Math.min(1,(t-r.s)/r.d),x=r.x0+(r.x1-r.x0)*k,y=H+10+(r.y1-H-10)*ease(k);cx.fillStyle="hsl("+r.h+",100%,75%)";cx.beginPath();cx.arc(x,y,2.2,0,6.2832);cx.fill();
+if(Math.random()<.9)pt.push({x,y,vx:(Math.random()-.5)*.6,vy:Math.random()*.8,l:.6,dc:.05,h:r.h,z:1});
+if(k>=1){boom(r);rk.splice(i,1)}}
+for(let i=pt.length-1;i>=0;i--){const p=pt[i];p.vx*=.985;p.vy=p.vy*.985+.045;p.x+=p.vx;p.y+=p.vy;p.l-=p.dc;if(p.l<=0){pt.splice(i,1);continue}
+cx.fillStyle="hsla("+p.h+",100%,"+(55+p.l*20)+"%,"+p.l+")";cx.beginPath();cx.arc(p.x,p.y,p.z,0,6.2832);cx.fill()}
+if(e<3600||rk.length||pt.length)requestAnimationFrame(step);else{removeEventListener("resize",rs);cv.style.opacity=0;setTimeout(()=>cv.remove(),600)}};
+requestAnimationFrame(step)}
+f.onsubmit=async e=>{e.preventDefault();if(busy)return;const d=new FormData(f);if(d.get("website"))return;d.set("when",fd(d.get("when")));
+busy=true;btn.disabled=true;fireworks();
+if(!SHEET_URL){const m=`Assalomu alaykum! Saytingiz orqali buyurtma qoldirmoqchiman.\n\n👤 Ism: ${d.get("name")}\n📞 Aloqa: ${d.get("contact")}\n🎯 Maqsad: ${d.get("goal")}\n📅 Qachonga: ${d.get("when")}\n💰 Byudjet: ${d.get("budget")}`,u="https://t.me/Hojimuqonn?text="+encodeURIComponent(m);let s=3;const say=()=>{msg.textContent="Rahmat, arizangiz tayyor. "+s+" soniyadan keyin Telegram'ga o'tamiz…"};say();const iv=setInterval(()=>{s--;if(s>0)say()},1000);setTimeout(()=>{clearInterval(iv);msg.textContent="Telegram ochilmoqda…";location.href=u},3000);return}
+msg.textContent="Yuborilmoqda...";const wait=new Promise(r=>setTimeout(r,3000));
+try{await Promise.all([fetch(SHEET_URL,{method:"POST",mode:"no-cors",body:new URLSearchParams(d)}),wait]);f.reset();msg.textContent="Rahmat! Arizangiz qabul qilindi, tez orada bog'lanaman."}
+catch(_){await wait;msg.textContent="Yuborib bo'lmadi. Telegram orqali yozing: @Hojimuqonn"}
+busy=false;btn.disabled=false};
+addEventListener("pageshow",e=>{if(e.persisted){busy=false;btn.disabled=false;msg.textContent=""}});
 (()=>{
 const g=".slider,.logos,#hamkorlar .mute,.stats>div,.svc a,.about>div,.photos,.g,.gh,form,#aloqa p,#aloqa .btns,.bsh,.bs,section h2",cnt=new Map,io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;io.unobserve(el);el.classList.add("in");const b=el.querySelector("b");if(b&&el.parentElement.className=="stats")count(b);setTimeout(()=>el.classList.remove("rv","in"),1500)}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
 document.querySelectorAll(g).forEach(el=>{const p=el.parentElement,n=cnt.get(p)||0;cnt.set(p,n+1);el.style.setProperty("--d",Math.min(n,5)*.09+"s");el.classList.add("rv");io.observe(el)});
