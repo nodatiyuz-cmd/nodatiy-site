@@ -4,6 +4,7 @@
 const tv=document.getElementById("tv");
 if(tv)fetch("/api/views?total=1").then(r=>r.ok?r.json():{}).then(d=>{
   if(typeof d.total!=="number"||d.total<1e6)return; /* kam bo'lsa, HTML dagi qiymat qoladi */
+  tv.parentElement.classList.add("is-live"); /* jonli belgisi faqat ma'lumot kelganda ko'rinadi */
   const T=d.total,fm=n=>Math.round(n).toLocaleString("en-US").replace(/,/g,"\u00a0"); /* 2 194 675 */
   const run=()=>{
     if(matchMedia("(prefers-reduced-motion:reduce)").matches){tv.textContent=fm(T);return}

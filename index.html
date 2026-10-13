@@ -182,6 +182,15 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 .vcard .vw svg,.card .vw svg{position:static!important;width:13px!important;height:13px!important;margin:0!important;opacity:.85}
 #tv{font-variant-numeric:tabular-nums;white-space:nowrap}
 @media(max-width:520px){.stats b{font-size:clamp(1.35rem,7.4vw,2.3rem)}}
+.live{display:none;align-items:center;gap:7px;width:max-content;max-width:100%;margin-top:10px;padding:3px 11px 3px 9px;border-radius:980px;background:#1d1d1f;border:1px solid rgba(255,255,255,.08);font-style:normal;font-size:.78rem;line-height:1.4;color:#d2d2d7;white-space:nowrap}
+.is-live .live{display:flex}
+.live .ld{flex:none;width:7px;height:7px;border-radius:50%;background:#ff3b30;animation:lvb 1.4s ease-in-out infinite}
+@keyframes lvb{0%,100%{opacity:1}50%{opacity:.1}}
+.live .sep{flex:none;width:1px;height:12px;background:rgba(255,255,255,.18);text-decoration:none}
+.live svg{flex:none;width:16px;height:16px}
+.live small{font-size:inherit;color:#f5f5f7}
+@media(max-width:520px){.live{gap:5px;padding:3px 9px 3px 8px;font-size:.72rem}.live small{display:none}.live .sep{display:none}}
+@media(prefers-reduced-motion:reduce){.live .ld{animation:none}}
 </style>
 </head>
 <body>
@@ -221,7 +230,7 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 <div><b>3+ yil</b><span>tajriba</span></div>
 <div><b>50+</b><span>professional podkast</span></div>
 <div><b>~20</b><span>tadbirkor bilan safarlarda syomka</span></div>
-<div><b id="tv">3 mln+</b><span>videolarning umumiy ko'rilishi</span></div>
+<div><b id="tv">3 mln+</b><span>YouTube'dagi umumiy ko'rilish</span><em class="live" title="Bu raqam YouTube'dan jonli yangilanadi"><i class="ld" aria-hidden="true"></i>jonli<u class="sep" aria-hidden="true"></u><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="4.5" fill="#ff0033"/><path d="M10 9l5.5 3-5.5 3z" fill="#fff"/></svg><small>YouTube</small></em></div>
 </div>
 <div class="bsh"><h3>Kamera ortida</h3><p>Syomka maydonchalari va safarlardan kadrlar. Ustiga bosing, kattalashadi.</p></div>
 <div class="bs"><a href="assets/backstage/bs-1.webp" style="--r:1.5"><img loading="lazy" decoding="async" src="assets/backstage/bs-1-t.webp" width="820" height="547" alt="Hojimuqon kamera bilan, tabiatda syomka paytida guruh suratida"></a><a href="assets/backstage/bs-2.webp" style="--r:1.27" data-cap="Fikr yetakchilari tadbirida · Hikmat Abdurahmonov bilan"><img loading="lazy" decoding="async" src="assets/backstage/bs-2-t.webp" width="820" height="645" alt="Fikr yetakchilari tadbirida Hojimuqon va Hikmat Abdurahmonov"></a><a href="assets/backstage/bs-3.webp" style="--r:1.527" data-cap="Fikr yetakchilari · Tog' safari 3.0"><img loading="lazy" decoding="async" src="assets/backstage/bs-3-t.webp" width="820" height="537" alt="Fikr yetakchilari jamoasi va mehmon, Tog' safari 3.0"></a><a href="assets/backstage/bs-4.webp" style="--r:1.481"><img loading="lazy" decoding="async" src="assets/backstage/bs-4-t.webp" width="820" height="554" alt="Hojimuqon tog' daryosi bo'yida safar syomkasi paytida"></a><a href="assets/backstage/bs-5.webp" style="--r:1.0"><img loading="lazy" decoding="async" src="assets/backstage/bs-5-t.webp" width="820" height="820" alt="Backstage: syomkadan keyin mehmon bilan"></a><a href="assets/backstage/bs-6.webp" style="--r:1.0"><img loading="lazy" decoding="async" src="assets/backstage/bs-6-t.webp" width="820" height="820" alt="Backstage: syomka maydonchasida mehmon bilan"></a><a href="assets/backstage/bs-7.webp" style="--r:1.0"><img loading="lazy" decoding="async" src="assets/backstage/bs-7-t.webp" width="820" height="820" alt="Safar paytida mehmon bilan"></a></div>
