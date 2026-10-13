@@ -1,10 +1,5 @@
-@property --r{syntax:"<length>";inherits:false;initial-value:0px}
-@property --h{syntax:"<number>";inherits:false;initial-value:200}
-@keyframes hueSpin{to{--h:560}}
-@keyframes auraHue{to{filter:hue-rotate(360deg)}}
-.fx{--r:0px;--h:200;background:radial-gradient(circle max(var(--r),.01px) at var(--mx,50%) var(--my,50%),hsl(var(--h) 95% 68%),hsl(calc(var(--h) + 70) 92% 64%) 55%,hsl(calc(var(--h) + 140) 90% 62% / 0) 100%),linear-gradient(currentColor,currentColor);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;transition:--r .5s cubic-bezier(.2,.7,.2,1)}
-.fx.hot{--r:150px;animation:hueSpin 3.2s linear infinite}
-.aura{position:fixed;left:0;top:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;pointer-events:none;z-index:-1;opacity:0;transition:opacity .6s;background:radial-gradient(circle,rgba(41,151,255,.17),rgba(175,82,222,.10) 45%,rgba(255,55,95,0) 70%);will-change:transform,filter;animation:auraHue 12s linear infinite}
+@keyframes auraHue{0%{filter:hue-rotate(-30deg)}100%{filter:hue-rotate(50deg)}}
+.aura{position:fixed;left:0;top:0;width:620px;height:620px;margin:-310px 0 0 -310px;border-radius:50%;pointer-events:none;z-index:-1;opacity:0;transition:opacity .8s;background:radial-gradient(circle,rgba(70,130,255,.11),rgba(130,100,230,.06) 45%,rgba(70,130,255,0) 70%);will-change:transform,filter;animation:auraHue 9s ease-in-out infinite alternate}
 .aura.on{opacity:1}
-@media(prefers-reduced-motion:reduce){.fx.hot{animation:none}.aura{display:none}}
-@media(forced-colors:active){.fx{background:none;-webkit-text-fill-color:currentColor}.aura{display:none}}
+@media(prefers-reduced-motion:reduce){.aura{display:none}}
+@media(forced-colors:active){.aura{display:none}}

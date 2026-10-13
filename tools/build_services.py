@@ -167,8 +167,8 @@ def page(s):
 <link rel="preconnect" href="https://i.ytimg.com">
 <script type="application/ld+json">{ld}</script>
 <link rel="stylesheet" href="/assets/page.css">
-<link rel="stylesheet" href="/assets/fx.css">
-<script src="/assets/fx.js" defer></script>
+<link rel="stylesheet" href="/assets/fx.css?v=2">
+<script src="/assets/fx.js?v=2" defer></script>
 </head>
 <body>
 <header><div class="wrap">
