@@ -192,6 +192,7 @@ footer a{color:var(--mute);text-underline-offset:3px}footer a:hover{color:#fff}
 @media(max-width:520px){.live{gap:5px;padding:3px 9px 3px 8px;font-size:.72rem}.live small{display:none}.live .sep{display:none}}
 @media(prefers-reduced-motion:reduce){.live .ld{animation:none}}
 .stats .yti{display:inline-block;width:19px;height:13.5px;margin-right:7px;vertical-align:-1.5px}
+@media(max-width:520px){#aloqa p{margin:0 -12px 30px;font-size:min(1.0625rem,calc((100vw - 52px)/22))}}
 </style>
 <link rel="stylesheet" href="/assets/fx.css?v=3">
 <script src="/assets/fx.js?v=2" defer></script>
@@ -343,6 +344,10 @@ BS.forEach(a=>a.addEventListener("click",e=>{if(e.metaKey||e.ctrlKey||e.shiftKey
 $("lbx").onclick=bclose;$("lbp").onclick=()=>bshow(bi-1);$("lbn").onclick=()=>bshow(bi+1);LB.addEventListener("click",e=>{if(e.target===LB)bclose()});
 addEventListener("keydown",e=>{if(LB.hidden)return;if(e.key==="Escape")bclose();else if(e.key==="ArrowLeft"){e.preventDefault();bshow(bi-1)}else if(e.key==="ArrowRight"){e.preventDefault();bshow(bi+1)}});
 LB.addEventListener("touchstart",e=>{bx0=e.changedTouches[0].clientX},{passive:true});LB.addEventListener("touchend",e=>{const d=e.changedTouches[0].clientX-bx0;if(Math.abs(d)>55)bshow(bi+(d<0?1:-1))},{passive:true});
+(()=>{const p=document.querySelector("#aloqa p");if(!p)return;
+const fit=()=>{p.style.fontSize="";if(!matchMedia("(max-width:520px)").matches)return;let s=parseFloat(getComputedStyle(p).fontSize);const lh=()=>parseFloat(getComputedStyle(p).lineHeight);
+for(let i=0;i<16&&p.getBoundingClientRect().height>lh()*2.5&&s>11;i++){s-=.5;p.style.fontSize=s+"px"}};
+fit();addEventListener("resize",fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit)})();
 const RM=matchMedia("(prefers-reduced-motion:reduce)").matches,VEL=40;
 const tick=t=>{requestAnimationFrame(tick);const dt=Math.min((t-t0)/1000||0,.1);t0=t;
 if(RM||!vis||document.hidden||mo)return;
